@@ -1,20 +1,33 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 
+const BarLink = function(props) {
+  const classes = "nav-icon glyphicon glyphicon-" + props.glyph
+  return (
+    <td className="nav-button">
+      <Link to={props.uri}>
+        {props.text}
+        <span className={classes} />
+      </Link>
+    </td>
+  )
+}
+
 const App = (props) => {
+  const spacer = (<span className="spacer">|</span>)
   return (
     <div>
       <div className="top-bar">
-        <Link to="/">Vote Home</Link>
-        {' | '}
-        <Link to="/view">View Polls</Link>
-        {' | '}
-        <Link to="/create">Create</Link>
-        {' | '}
-        <Link to="/login">Login</Link>
-        <br/>
+        <table className="top-bar-table">
+          <tr>
+            <BarLink uri="/" text="Home" glyph="home" />
+            <BarLink uri="/view" text="View Polls" glyph="stats" />
+            <BarLink uri="/create" text="Create" glyph="plus" />
+            <BarLink uri="/login" text="Login" glyph="user" />
+          </tr>
+        </table>
       </div>
-      <div className="container">
+      <div className="container standard-page">
         {props.children}
       </div>
     </div>
