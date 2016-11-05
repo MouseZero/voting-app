@@ -9,9 +9,10 @@ import configureStore from './store/configureStore';
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 import './styles/voteStyle.scss';
 
+const store = configureStore();
 
 render(
-  <Provider store="">
+  <Provider store={store}>
     <Router routes={routes} />
   </Provider>, document.getElementById('app')
 );
