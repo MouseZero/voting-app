@@ -8,11 +8,13 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 import './styles/voteStyle.scss';
+import {syncHistoryWithStore} from 'react-router-redux';
 
 const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
 render(
   <Provider store={store}>
-    <Router routes={routes} />
+    <Router history={history} routes={routes} />
   </Provider>, document.getElementById('app')
 );
