@@ -29,7 +29,6 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
-    "express": "4.14.0",
     "object-assign": "4.1.0",
     "passport": "0.3.2",
     "react": "15.3.2",
