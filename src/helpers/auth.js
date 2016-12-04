@@ -1,4 +1,11 @@
 module.exports = {
+
+  requireAuth(nextState, replace){
+    // replace({
+    //   pathname: "/otherpath",
+    // })
+  },
+
   login(){
     localStorage.token = "testToken";
   },
