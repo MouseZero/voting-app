@@ -14,7 +14,12 @@ const BarLink = function(props) {
 }
 
 const App = React.createClass({
-  render: function(){
+  getInitialState(){
+    return {
+      loggedIn: true
+    }
+  },
+  render(){
     const spacer = (<span className="spacer">|</span>)
     return (
       <div>
