@@ -13,28 +13,30 @@ const BarLink = function(props) {
   )
 }
 
-const App = (props) => {
-  const spacer = (<span className="spacer">|</span>)
-  return (
-    <div>
-      <div className="top-bar">
-        <table className="top-bar-table">
-          <tbody>
-            <tr>
-              <BarLink uri="/" text="Home" glyph="home" />
-              <BarLink uri="/view" text="View Polls" glyph="stats" />
-              <BarLink uri="/create" text="Create" glyph="plus" />
-              <BarLink uri="/login" text="Login" glyph="user" />
-            </tr>
-          </tbody>
-        </table>
+const App = React.createClass({
+  render: function(){
+    const spacer = (<span className="spacer">|</span>)
+    return (
+      <div>
+        <div className="top-bar">
+          <table className="top-bar-table">
+            <tbody>
+              <tr>
+                <BarLink uri="/" text="Home" glyph="home" />
+                <BarLink uri="/view" text="View Polls" glyph="stats" />
+                <BarLink uri="/create" text="Create" glyph="plus" />
+                <BarLink uri="/login" text="Login" glyph="user" />
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="container standard-page">
+          {this.props.children}
+        </div>
       </div>
-      <div className="container standard-page">
-        {props.children}
-      </div>
-    </div>
-  );
-};
+    );
+  }
+});
 
 App.propTypes = {
   children: PropTypes.element
