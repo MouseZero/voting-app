@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
+import auth from '../helpers/auth.js';
 
 const BarLink = function(props) {
   const classes = "nav-icon glyphicon glyphicon-" + props.glyph
@@ -19,6 +20,11 @@ class App extends React.Component {
     this.state = {
       loggedIn: false
     };
+    this.updateLogInStatus = this.updateLogInStatus.bind(this);
+  }
+
+  updateLogInStatus(){
+    console.log('Trying to update login status')
   }
 
   render(){
@@ -38,7 +44,10 @@ class App extends React.Component {
           </table>
         </div>
         <div className="container standard-page">
-          {React.cloneElement(this.props.children, {loggedIn: this.state.loggedIn})}
+          {React.cloneElement(this.props.children, {
+            loggedIn: this.state.loggedIn,
+            updateLogInStatus: this.updateLogInStatus
+          })}
         </div>
       </div>
     );
