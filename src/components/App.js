@@ -36,7 +36,7 @@ const App = React.createClass({
           </table>
         </div>
         <div className="container standard-page">
-          {this.props.children}
+          {React.cloneElement(this.props.children, {foo: 'bar'})}
         </div>
       </div>
     );
