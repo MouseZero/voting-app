@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
-import auth from '../helpers/auth.js';
+import auth from '../helpers/auth.js'
 
 const BarLink = function(props) {
   const classes = "nav-icon glyphicon glyphicon-" + props.glyph
@@ -24,7 +24,12 @@ class App extends React.Component {
   }
 
   updateLogInStatus(){
-    console.log('Trying to update login status')
+    console.log('Updating logged in state')
+    if(auth.loggedIn()){
+      this.setState({loggedIn: true});
+    }else{
+      this.setState({loggedIn: false});
+    }
   }
 
   render(){
