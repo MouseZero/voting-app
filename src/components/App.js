@@ -16,12 +16,9 @@ const BarLink = function(props) {
 class App extends React.Component {
   constructor(props){
     super(props);
-  }
-
-  getInitialState(){
-    return {
-      loggedIn: true
-    }
+    this.state = {
+      loggedIn: false
+    };
   }
 
   render(){
@@ -32,7 +29,6 @@ class App extends React.Component {
           <table className="top-bar-table">
             <tbody>
               <tr>
-                Test
                 <BarLink uri="/" text="Home" glyph="home" />
                 <BarLink uri="/view" text="View Polls" glyph="stats" />
                 <BarLink uri="/create" text="Create" glyph="plus" />
@@ -42,7 +38,7 @@ class App extends React.Component {
           </table>
         </div>
         <div className="container standard-page">
-          {React.cloneElement(this.props.children, {foo: 'bar'})}
+          {React.cloneElement(this.props.children, {loggedIn: this.state.loggedIn})}
         </div>
       </div>
     );
