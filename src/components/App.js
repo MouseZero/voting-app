@@ -13,12 +13,17 @@ const BarLink = function(props) {
   )
 }
 
-const App = React.createClass({
+class App extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
   getInitialState(){
     return {
       loggedIn: true
     }
-  },
+  }
+
   render(){
     const spacer = (<span className="spacer">|</span>)
     return (
@@ -27,6 +32,7 @@ const App = React.createClass({
           <table className="top-bar-table">
             <tbody>
               <tr>
+                Test
                 <BarLink uri="/" text="Home" glyph="home" />
                 <BarLink uri="/view" text="View Polls" glyph="stats" />
                 <BarLink uri="/create" text="Create" glyph="plus" />
@@ -41,7 +47,7 @@ const App = React.createClass({
       </div>
     );
   }
-});
+}
 
 App.propTypes = {
   children: PropTypes.element
