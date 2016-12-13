@@ -2,8 +2,26 @@ import React from 'react';
 import auth from '../helpers/auth.js'
 
 class LoginPage extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: '',
+      password: ''
+    };
+    this.nameBoxChange = this.nameBoxChange.bind(this)
+    this.passwordBoxChange = this.passwordBoxChange.bind(this)
+  }
+
+  nameBoxChange(event){
+    this.setState({name: event.target.value});
+  }
+
+  passwordBoxChange(event){
+    this.setState({password: event.target.value});
+  }
+
   login(){
-    auth.login('testuser', 'password');
+    auth.login(this.state.name, this.state.password);
   }
 
   logout(){
@@ -15,15 +33,23 @@ class LoginPage extends React.Component {
       <div>
         <h1>Login</h1>
         <form>
-          User: <input ref='iUser' type='text'></input>
+          User: 
+          <input 
+            type='text'
+            value={this.state.name} 
+            onChange={this.nameBoxChange}></input>
           <br />
-          Password: <input ref='iPass' type='text'></input>
+          Password: 
+          <input 
+            type='password' 
+            value={this.state.password} 
+            onChange={this.passwordBoxChange}></input>
         </form>
         You currently are {!auth.loggedIn() && "not "}logged in.
-        <button onClick={()=>login()}>
+        <button onClick={()=>this.login()}>
           Log On
         </button>
-        <button onClick={()=>logout()}>
+        <button onClick={()=>this.logout()}>
           Log Out
         </button>
       </div>
