@@ -32,19 +32,26 @@ class LoginPage extends React.Component {
     return (
       <div>
         <h1>Login</h1>
+
         <form>
+
           User: 
           <input 
             type='text'
             value={this.state.name} 
-            onChange={this.nameBoxChange}></input>
+            onChange={this.nameBoxChange}>
+          </input>
           <br />
+
           Password: 
           <input 
             type='password' 
             value={this.state.password} 
-            onChange={this.passwordBoxChange}></input>
+            onChange={this.passwordBoxChange}>
+          </input>
+
         </form>
+
         You currently are {!auth.loggedIn() && "not "}logged in.
         <button onClick={()=>this.login()}>
           Log On
