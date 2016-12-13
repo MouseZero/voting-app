@@ -3,7 +3,7 @@ import auth from '../helpers/auth.js'
 
 module.exports = function () {
   function login(){
-    auth.login();
+    auth.login('testuser', 'password');
   }
 
   function logout(){

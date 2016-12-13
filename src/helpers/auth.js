@@ -6,7 +6,7 @@ module.exports = {
     // })
   },
 
-  login(){
+  login(name, password){
     localStorage.token = "testToken";
     console.log('trying to login');
     var url = 'http://z3r0.info:3333/api/authenticate'
@@ -15,8 +15,8 @@ module.exports = {
       type: method,
       dataType: 'json',
       data: {
-        name: 'testuser',
-        password: 'password'
+        name: name,
+        password: password
       },
       success: function(data, textStatus, jqXHR){
         console.log(data)
