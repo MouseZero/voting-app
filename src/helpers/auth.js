@@ -7,8 +7,6 @@ module.exports = {
   },
 
   login(name, password){
-    localStorage.token = "testToken";
-    console.log('trying to login');
     var url = 'http://z3r0.info:3333/api/authenticate'
     var method = 'POST'
     $.ajax(url, {
@@ -19,7 +17,9 @@ module.exports = {
         password: password
       },
       success: function(data, textStatus, jqXHR){
-        console.log(data)
+        if(data.success){
+          localStorage.token = data.token;
+        }
       },
       error: function(jqXHR, textStatus, errorThrown){
         try{
