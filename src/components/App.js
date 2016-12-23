@@ -2,18 +2,6 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import auth from '../helpers/auth.js';
 
-const BarLink = function(props) {
-  const classes = "nav-icon glyphicon glyphicon-" + props.glyph;
-  return (
-    <td className="nav-button">
-      <Link to={props.uri}>
-        {props.text}
-        <span className={classes} />
-      </Link>
-    </td>
-  );
-};
-
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -21,6 +9,19 @@ class App extends React.Component {
       loggedIn: false
     };
     this.updateLogInStatus = this.updateLogInStatus.bind(this);
+    this.BarLink = this.BarLink.bind(this);
+  }
+
+  BarLink(props){
+    const classes = "nav-icon glyphicon glyphicon-" + props.glyph;
+    return (
+      <td className="nav-button">
+        <Link to={props.uri}>
+          {props.text}
+          <span className={classes} />
+        </Link>
+      </td>
+    );
   }
 
   updateLogInStatus(){
@@ -38,10 +39,10 @@ class App extends React.Component {
           <table className="top-bar-table">
             <tbody>
               <tr>
-                <BarLink uri="/" text="Home" glyph="home" />
-                <BarLink uri="/view" text="View Polls" glyph="stats" />
-                <BarLink uri="/create" text="Create" glyph="plus" />
-                <BarLink uri="/login" text="Login" glyph="user" />
+                <this.BarLink uri="/" text="Home" glyph="home" />
+                <this.BarLink uri="/view" text="View Polls" glyph="stats" />
+                <this.BarLink uri="/create" text="Create" glyph="plus" />
+                <this.BarLink uri="/login" text="Login" glyph="user" />
               </tr>
             </tbody>
           </table>
@@ -58,7 +59,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
 };
 
 export default App;
