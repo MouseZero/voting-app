@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from '../helpers/auth.js'
+import auth from '../helpers/auth.js';
 
 class LoginPage extends React.Component {
   constructor(props){
@@ -8,8 +8,8 @@ class LoginPage extends React.Component {
       name: '',
       password: ''
     };
-    this.nameBoxChange = this.nameBoxChange.bind(this)
-    this.passwordBoxChange = this.passwordBoxChange.bind(this)
+    this.nameBoxChange = this.nameBoxChange.bind(this);
+    this.passwordBoxChange = this.passwordBoxChange.bind(this);
   }
 
   nameBoxChange(event){
@@ -37,18 +37,16 @@ class LoginPage extends React.Component {
 
           User: 
           <input 
-            type='text'
+            type="text"
             value={this.state.name} 
-            onChange={this.nameBoxChange}>
-          </input>
+            onChange={this.nameBoxChange} />
           <br />
 
           Password: 
-          <input 
-            type='password' 
+          <input
+            type="password" 
             value={this.state.password} 
-            onChange={this.passwordBoxChange}>
-          </input>
+            onChange={this.passwordBoxChange} />
 
         </form>
 
@@ -60,8 +58,8 @@ class LoginPage extends React.Component {
           Log Out
         </button>
       </div>
-    )
-  }
+    );
+  };
 
 }
 

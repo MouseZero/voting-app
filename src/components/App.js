@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import { Link, IndexLink } from 'react-router';
-import auth from '../helpers/auth.js'
+import { Link } from 'react-router';
+import auth from '../helpers/auth.js';
 
 const BarLink = function(props) {
-  const classes = "nav-icon glyphicon glyphicon-" + props.glyph
+  const classes = "nav-icon glyphicon glyphicon-" + props.glyph;
   return (
     <td className="nav-button">
       <Link to={props.uri}>
@@ -11,8 +11,8 @@ const BarLink = function(props) {
         <span className={classes} />
       </Link>
     </td>
-  )
-}
+  );
+};
 
 class App extends React.Component {
   constructor(props){
@@ -24,7 +24,6 @@ class App extends React.Component {
   }
 
   updateLogInStatus(){
-    console.log('Updating logged in state')
     if(auth.loggedIn()){
       this.setState({loggedIn: true});
     }else{
@@ -33,7 +32,6 @@ class App extends React.Component {
   }
 
   render(){
-    const spacer = (<span className="spacer">|</span>)
     return (
       <div>
         <div className="top-bar">
