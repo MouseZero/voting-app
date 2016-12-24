@@ -10,5 +10,5 @@ module.exports = function () {
         will show you the voting pattern of the respondents.
       </p>
     </div>
-  )
-}
+  );
+};

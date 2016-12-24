@@ -1,14 +1,8 @@
 module.exports = {
 
-  requireAuth(nextState, replace){
-    // replace({
-    //   pathname: "/otherpath",
-    // })
-  },
-
   login(name, password){
-    var url = 'http://z3r0.info:3333/api/authenticate'
-    var method = 'POST'
+    const url = 'http://z3r0.info:3333/api/authenticate';
+    const method = 'POST';
     $.ajax(url, {
       type: method,
       dataType: 'json',
@@ -16,7 +10,7 @@ module.exports = {
         name: name,
         password: password
       },
-      success: function(data, textStatus, jqXHR){
+      success: function(data){
         if(data.success){
           localStorage.token = data.token;
         }
@@ -36,10 +30,11 @@ module.exports = {
   },
 
   logout(){
-    delete localStorage.token
+    delete localStorage.token;
   },
 
   loggedIn(){
-    return !!localStorage.token
+    return !!localStorage.token;
   }
-}
+
+};

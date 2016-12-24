@@ -5,5 +5,5 @@ module.exports = function () {
     <div>
       View Polls
     </div>
-  )
-}
+  );
+};
