@@ -8,12 +8,12 @@ module.exports = function (props) {
   const login = function(){
     auth.login();
     props.updateLogInStatus();
-  }
+  };
 
   const logout = function(){
     auth.logout();
     props.updateLogInStatus();
-  }
+  };
 
   return (
     <div>
@@ -25,5 +25,5 @@ module.exports = function (props) {
         <button onClick={logout}>LogOut</button>
       </div>
     </div>
-  )
-}
+  );
+};
