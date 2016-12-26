@@ -1,7 +1,7 @@
 const React = require('react');
 import auth from '../helpers/auth.js';
 
-module.exports = function (props) {
+const createPollsPage = function(props) {
 
   const text = props.loggedIn ? 'Logged In' : 'Not Logged In';
 
@@ -27,3 +27,10 @@ module.exports = function (props) {
     </div>
   );
 };
+
+createPollsPage.propTypes = {
+  loggedIn: React.PropTypes.bool,
+  updateLogInStatus: React.PropTypes.func
+};
+
+module.exports = createPollsPage;
