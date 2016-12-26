@@ -59,8 +59,8 @@ class LoginPage extends React.Component {
         </button>
       </div>
     );
-  };
+  }
 
 }
 
-module.exports = LoginPage
+module.exports = LoginPage;
