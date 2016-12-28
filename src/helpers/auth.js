@@ -1,6 +1,6 @@
 module.exports = {
 
-  login(name, password){
+  login(name, password, cb){
     const url = 'http://z3r0.info:3333/api/authenticate';
     const method = 'POST';
     $.ajax(url, {
@@ -19,7 +19,7 @@ module.exports = {
         try{
           throw errorThrown;
         }catch(err){
-          console.log(err);
+          cb(err);
         }
       }
     });
