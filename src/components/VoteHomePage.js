@@ -13,4 +13,4 @@ function voteHomePage() {
   );
 }
 
-module.exports = voteHomePage;
+ export default voteHomePage;

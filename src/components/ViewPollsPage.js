@@ -1,9 +1,11 @@
 import React from 'react';
 
-module.exports = function () {
+function viewPollsPage() {
   return (
     <div>
       View Polls
     </div>
   );
-};
+}
+
+export default viewPollsPage;

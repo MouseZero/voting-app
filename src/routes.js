@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import NotFoundPage from './components/NotFoundPage.js';
+import NotFoundPage from './components/NotFoundPage';
 import HomePage from './components/VoteHomePage';
 import CreatePoll from './components/CreatePollsPage';
 import LoginPage from './components/LoginPage';

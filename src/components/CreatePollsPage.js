@@ -33,4 +33,4 @@ createPollsPage.propTypes = {
   updateLogInStatus: React.PropTypes.func
 };
 
-module.exports = createPollsPage;
+export default createPollsPage;
