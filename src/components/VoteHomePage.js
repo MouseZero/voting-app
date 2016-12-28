@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 
-module.exports = function () {
+function voteHomePage() {
   return (
     <div>
       <h1>Voting App</h1>
@@ -11,4 +11,6 @@ module.exports = function () {
       </p>
     </div>
   );
-};
+}
+
+module.exports = voteHomePage;
