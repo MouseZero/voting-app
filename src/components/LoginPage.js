@@ -1,67 +1,20 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import auth from '../helpers/auth.js';
+import loginActions from '../actions/loginActions';
 
-class LoginPage extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      loggedIn: false,
-      name: '',
-      password: ''
-    };
-    this.nameBoxChange = this.nameBoxChange.bind(this);
-    this.passwordBoxChange = this.passwordBoxChange.bind(this);
-  }
-
-  nameBoxChange(event){
-    this.setState({name: event.target.value});
-  }
-
-  passwordBoxChange(event){
-    this.setState({password: event.target.value});
-  }
-
-  login(){
-    auth.login(this.state.name, this.state.password);
-  }
-
-  logout(){
-    auth.logout();
-  }
-
+class LoginPage extends React.Component{
   render(){
     return (
       <div>
-        <h1>Login</h1>
-
-        <form>
-
-          User: 
-          <input 
-            type="text"
-            value={this.state.name} 
-            onChange={this.nameBoxChange} />
-          <br />
-
-          Password: 
-          <input
-            type="password" 
-            value={this.state.password} 
-            onChange={this.passwordBoxChange} />
-
-        </form>
-
-        You currently are {!auth.loggedIn() && "not "}logged in.
-        <button onClick={()=>this.login()}>
-          Log On
-        </button>
-        <button onClick={()=>this.logout()}>
-          Log Out
-        </button>
+        User: <input type="text" ref={node => {this.nameInput = node}}></input>
+        <br />
+        Password: <input type="password" ref={node => this.passwordInput = node}></input>
+        <br />
+        <button onClick={()=>alert(this.nameInput.value)} >LogIn</button>
       </div>
-    );
+    )
   }
-
 }
 
-export default LoginPage;
+export default connect()(LoginPage);
