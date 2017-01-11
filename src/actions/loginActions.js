@@ -1,3 +1,3 @@
-export function loggedInChange (loggedIn){
-  return {type: 'LOGGED_IN_CHANGE', loggedIn};
+export function changeToken(token){
+  return {type: 'CHANGE_TOKEN', token};
 }
