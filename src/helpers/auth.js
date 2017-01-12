@@ -1,6 +1,6 @@
 module.exports = {
 
-  login(name, password, cb){
+  getToken(name, password, cb){
     const url = 'http://z3r0.info:3333/api/authenticate';
     const method = 'POST';
     $.ajax(url, {
