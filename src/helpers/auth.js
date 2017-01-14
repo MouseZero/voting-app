@@ -1,6 +1,6 @@
 module.exports = {
 
-  getToken(name, password, cb){
+  getNewToken(name, password, cb){
     const url = 'http://z3r0.info:3333/api/authenticate';
     const method = 'POST';
     $.ajax(url, {
@@ -13,6 +13,7 @@ module.exports = {
       success: function(data){
         if(data.success){
           localStorage.token = data.token;
+          cb(null, data)
         }
       },
       error: function(jqXHR, textStatus, errorThrown){
