@@ -47,6 +47,7 @@ class App extends React.Component {
             </tbody>
           </table>
         </div>
+        <p>&nbsp;</p>
         <div className="container standard-page">
           {React.cloneElement(this.props.children, {
             loggedIn: this.state.loggedIn,
