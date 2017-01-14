@@ -1,28 +1,22 @@
 const React = require('react');
+import { connect } from 'react-redux';
 import auth from '../helpers/auth.js';
 
 const createPollsPage = function(props) {
 
-  const text = props.loggedIn ? 'Logged In' : 'Not Logged In';
-
-  const login = function(){
-    auth.login();
-    props.updateLogInStatus();
-  };
-
-  const logout = function(){
-    auth.logout();
-    props.updateLogInStatus();
-  };
-
   return (
     <div>
-      This is the Create Polls page {text}
       <div>
-        <button onClick={login}>LogIn</button>
+        title: <input type="text"></input>
       </div>
       <div>
-        <button onClick={logout}>LogOut</button>
+        desc: <input type="text"></input>
+      </div>
+      <div>
+        json obj: <input type="text"></input>
+      </div>
+      <div>
+        {props.token}
       </div>
     </div>
   );
@@ -32,5 +26,10 @@ createPollsPage.propTypes = {
   loggedIn: React.PropTypes.bool,
   updateLogInStatus: React.PropTypes.func
 };
+const mapStateToProps = (state) => {
+  return {
+    token: state.login.token
+  }
+}
 
-export default createPollsPage;
+export default connect(mapStateToProps)(createPollsPage);
