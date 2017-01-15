@@ -18,7 +18,7 @@ class createPollsPage extends React.Component{
   }
 
   sendForChartCreation(){
-    createChart('some token', {
+    createChart(this.props.token, {
         title: 'test',
         desc: 'test descriptoin',
         points: {

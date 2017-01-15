@@ -1,4 +1,4 @@
-const url = 'http://z3r0.info:3333/api/authenticate';
+const url = 'http://localhost:3333/api/authenticate';
 
 module.exports = {
 
@@ -25,11 +25,24 @@ module.exports = {
     })
   },
 
-
-  createChart(token, chartObject, cb){
-    console.log('token:', token)
-    console.log('chartObject', chartObject);
-
+  createChart: (token, chart) => {
+    return new Promise((resolve, reject) => {
+      console.log('token', token);
+      console.log('chart', chart);
+      $.ajax(url, {
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          title: chart.title,
+          desc: chart.desc,
+          data: chart.points
+        },
+        beforeSend: function (jqXHR){
+          jqXHR.setRequestHeader('x-access-token', token);
+          jqXHR.setRequestHeader('Access-Control-Allow-Origin', '*');
+        }
+      })
+    });
   }
 
 };
