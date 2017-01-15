@@ -7,12 +7,11 @@ import HomePage from './components/VoteHomePage';
 import CreatePoll from './components/CreatePollsPage';
 import LoginPage from './components/LoginPage';
 import ViewPolls from './components/ViewPollsPage';
-import auth from './helpers/auth.js';
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage}/>
-    <Route path="create" components={CreatePoll} onEnter={auth.requireAuth}/>
+    <Route path="create" components={CreatePoll}/>
     <Route path="login" components={LoginPage}/>
     <Route path="view" components={ViewPolls}/>
     <Route path="*" component={NotFoundPage}/>

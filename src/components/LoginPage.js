@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import loginActions from '../actions/loginActions';
 import { objectToString } from '../debugging/util';
 import { changeToken } from '../actions/loginActions';
-import { getNewToken } from '../helpers/auth';
+import { getNewToken } from '../helpers/backendInterface';
 
 class LoginPage extends React.Component{
   constructor(props){

@@ -1,6 +1,6 @@
 const React = require('react');
 import { connect } from 'react-redux';
-import auth from '../helpers/auth.js';
+import { createChart } from '../helpers/backendInterface';
 
 const inputBox = function(props) {
   return (
@@ -12,6 +12,25 @@ const inputBox = function(props) {
 }
 
 class createPollsPage extends React.Component{
+  constructor(props){
+    super(props);
+    this.sendForChartCreation = this.sendForChartCreation.bind(this);
+  }
+
+  sendForChartCreation(){
+    createChart('some token', {
+        title: 'test',
+        desc: 'test descriptoin',
+        points: {
+          pepsi: 0,
+          coke: 0
+        }
+      },
+      function(data){
+        console.log('data I received: ' + data);
+    });
+  }
+
   render() {
     return (
       <div>
@@ -27,6 +46,7 @@ class createPollsPage extends React.Component{
         {inputBox({msg: 'Point 8'})}
         {inputBox({msg: 'Point 9'})}
         {inputBox({msg: 'Point 10'})}
+        <button onClick={this.sendForChartCreation}>Create Poll</button>
         <div>
           {this.props.token}
         </div>

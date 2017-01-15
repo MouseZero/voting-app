@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import auth from '../helpers/auth.js';
 
 class App extends React.Component {
   constructor(props){
@@ -8,7 +7,6 @@ class App extends React.Component {
     this.state = {
       loggedIn: false
     };
-    this.updateLogInStatus = this.updateLogInStatus.bind(this);
     this.BarLink = this.BarLink.bind(this);
   }
 
@@ -22,14 +20,6 @@ class App extends React.Component {
         </Link>
       </td>
     );
-  }
-
-  updateLogInStatus(){
-    if(auth.loggedIn()){
-      this.setState({loggedIn: true});
-    }else{
-      this.setState({loggedIn: false});
-    }
   }
 
   render(){
@@ -51,7 +41,6 @@ class App extends React.Component {
         <div className="container standard-page">
           {React.cloneElement(this.props.children, {
             loggedIn: this.state.loggedIn,
-            updateLogInStatus: this.updateLogInStatus
           })}
         </div>
       </div>

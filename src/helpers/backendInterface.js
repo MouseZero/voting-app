@@ -26,9 +26,10 @@ module.exports = {
     });
   },
 
-  createChart(token, title, desc, chartObject, cb){
-    console.log('trying to create chart');
-    cb();
+  createChart(token, chartObject, cb){
+    console.log('token:', token)
+    console.log('chartObject', chartObject);
+    cb('some data');
   }
 
 };
