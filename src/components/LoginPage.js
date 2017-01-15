@@ -13,13 +13,13 @@ class LoginPage extends React.Component{
 
   login(){
     const closureSetToken = this.props.setToken;
-    getNewToken(this.nameInput.value, this.passwordInput.value, function (err, data) {
-      if(err){
-        //TODO Replace with toaster
-        console.log(err);
-      }else{
-        closureSetToken(data.token);
-      }
+    getNewToken(this.nameInput.value, this.passwordInput.value)
+    .then(function(data){
+      closureSetToken(data.token);
+    })
+    .catch(function(err){
+      //TODO Replace with toaster
+      console.log(err.message);
     });
   }
 

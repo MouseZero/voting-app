@@ -1,35 +1,35 @@
+const url = 'http://z3r0.info:3333/api/authenticate';
+
 module.exports = {
 
-  getNewToken(name, password, cb){
-    const url = 'http://z3r0.info:3333/api/authenticate';
-    const method = 'POST';
-    $.ajax(url, {
-      type: method,
-      dataType: 'json',
-      data: {
-        name: name,
-        password: password
-      },
-      success: function(data){
-        if(data.success){
-          localStorage.token = data.token;
-          cb(null, data)
+  getNewToken: (name, password) => {
+    return new Promise((resolve, reject)=>{
+      $.ajax(url, {
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          name: name,
+          password, password
+        },
+
+        success: function(data){
+          if(data.success)
+            resolve(data);
+          reject(data);
+        },
+
+        error: function(){
+          reject('Could not log-in. Server could be down');
         }
-      },
-      error: function(jqXHR, textStatus, errorThrown){
-        try{
-          throw errorThrown;
-        }catch(err){
-          cb(err);
-        }
-      }
-    });
+      });
+    })
   },
+
 
   createChart(token, chartObject, cb){
     console.log('token:', token)
     console.log('chartObject', chartObject);
-    cb('some data');
+
   }
 
 };
