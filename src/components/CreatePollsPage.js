@@ -11,6 +11,7 @@ const inputBox = function(props) {
   )
 }
 
+
 class createPollsPage extends React.Component{
   constructor(props){
     super(props);
@@ -18,13 +19,13 @@ class createPollsPage extends React.Component{
   }
 
   sendForChartCreation(){
+    const points = this.point.reduce((p, x)=>{
+      return (x.value) ? Object.assign({}, p, {[x.value]: 0}) : p;
+    }, {});
     createChart(this.props.token, {
         title: this.title.value,
         desc:  this.desc.value,
-        points: {
-          pepsi: this.point1.value,
-          coke: 0
-        }
+        points
       },
       function(data){
         console.log('data I received: ' + data);
@@ -32,20 +33,19 @@ class createPollsPage extends React.Component{
   }
 
   render() {
+    this.point = [];
     return (
       <div>
         {inputBox({ref: node=>{this.title = node}, msg: 'Title'})}
         {inputBox({ref: node=>{this.desc = node}, msg: 'Description'})}
-        {inputBox({ref: node=>{this.point1 = node}, msg: 'Point 1'})}
-        {inputBox({msg: 'Point 2'})}
-        {inputBox({msg: 'Point 3'})}
-        {inputBox({msg: 'Point 4'})}
-        {inputBox({msg: 'Point 5'})}
-        {inputBox({msg: 'Point 6'})}
-        {inputBox({msg: 'Point 7'})}
-        {inputBox({msg: 'Point 8'})}
-        {inputBox({msg: 'Point 9'})}
-        {inputBox({msg: 'Point 10'})}
+        {inputBox({ref: node=>{this.point[0] = node}, msg: 'Point 0'})}
+        {inputBox({ref: node=>{this.point[1] = node}, msg: 'Point 1'})}
+        {inputBox({ref: node=>{this.point[2] = node}, msg: 'Point 2'})}
+        {inputBox({ref: node=>{this.point[3] = node}, msg: 'Point 3'})}
+        {inputBox({ref: node=>{this.point[4] = node}, msg: 'Point 4'})}
+        {inputBox({ref: node=>{this.point[5] = node}, msg: 'Point 5'})}
+        {inputBox({ref: node=>{this.point[6] = node}, msg: 'Point 6'})}
+        {inputBox({ref: node=>{this.point[7] = node}, msg: 'Point 7'})}
         <button onClick={this.sendForChartCreation}>Create Poll</button>
         <div>
           {this.props.token}
