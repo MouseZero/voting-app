@@ -11,28 +11,29 @@ const inputBox = function(props) {
   )
 }
 
-const createPollsPage = function(props) {
-
-  return (
-    <div>
-      {inputBox({msg: 'title'})}
-      {inputBox({msg: 'desc'})}
-      {inputBox({msg: 'Point 1'})}
-      {inputBox({msg: 'Point 2'})}
-      {inputBox({msg: 'Point 3'})}
-      {inputBox({msg: 'Point 4'})}
-      {inputBox({msg: 'Point 5'})}
-      {inputBox({msg: 'Point 6'})}
-      {inputBox({msg: 'Point 7'})}
-      {inputBox({msg: 'Point 8'})}
-      {inputBox({msg: 'Point 9'})}
-      {inputBox({msg: 'Point 10'})}
+class createPollsPage extends React.Component{
+  render() {
+    return (
       <div>
-        {props.token}
+        {inputBox({msg: 'title'})}
+        {inputBox({msg: 'desc'})}
+        {inputBox({msg: 'Point 1'})}
+        {inputBox({msg: 'Point 2'})}
+        {inputBox({msg: 'Point 3'})}
+        {inputBox({msg: 'Point 4'})}
+        {inputBox({msg: 'Point 5'})}
+        {inputBox({msg: 'Point 6'})}
+        {inputBox({msg: 'Point 7'})}
+        {inputBox({msg: 'Point 8'})}
+        {inputBox({msg: 'Point 9'})}
+        {inputBox({msg: 'Point 10'})}
+        <div>
+          {this.props.token}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 createPollsPage.propTypes = {
   loggedIn: React.PropTypes.bool,

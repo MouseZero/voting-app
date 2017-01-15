@@ -26,4 +26,9 @@ module.exports = {
     });
   },
 
+  createChart(token, title, desc, chartObject, cb){
+    console.log('trying to create chart');
+    cb();
+  }
+
 };
