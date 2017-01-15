@@ -6,7 +6,7 @@ const inputBox = function(props) {
   return (
     <div>
       {props.msg}:&nbsp;
-      <input type="text"></input>
+      <input ref={props.ref} type="text"></input>
     </div>
   )
 }
@@ -19,10 +19,10 @@ class createPollsPage extends React.Component{
 
   sendForChartCreation(){
     createChart(this.props.token, {
-        title: 'test',
-        desc: 'test descriptoin',
+        title: this.title.value,
+        desc:  this.desc.value,
         points: {
-          pepsi: 0,
+          pepsi: this.point1.value,
           coke: 0
         }
       },
@@ -34,9 +34,9 @@ class createPollsPage extends React.Component{
   render() {
     return (
       <div>
-        {inputBox({msg: 'title'})}
-        {inputBox({msg: 'desc'})}
-        {inputBox({msg: 'Point 1'})}
+        {inputBox({ref: node=>{this.title = node}, msg: 'Title'})}
+        {inputBox({ref: node=>{this.desc = node}, msg: 'Description'})}
+        {inputBox({ref: node=>{this.point1 = node}, msg: 'Point 1'})}
         {inputBox({msg: 'Point 2'})}
         {inputBox({msg: 'Point 3'})}
         {inputBox({msg: 'Point 4'})}
