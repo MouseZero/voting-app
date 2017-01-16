@@ -7,6 +7,7 @@ function PrintChart(props) {
       Title: {props.title}
       <br />
       Desc: {props.desc}
+      <hr></hr>
     </div>
   )
 }
