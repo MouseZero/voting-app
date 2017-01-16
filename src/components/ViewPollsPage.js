@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const printChart = ({ title }) => {
+function PrintChart(props) {
   return (
     <div>
-      This is a chart area
+      Title: {props.title}
+      <br />
+      Desc: {props.desc}
     </div>
   )
 }
@@ -14,9 +16,9 @@ function viewPollsPage({ charts }) {
   return (
     <div>
       <h1>Your Polls</h1>
-      {charts.map((elem, i)=>{
+      {charts.map( (x, i)=> {
         return (
-          <printChart key={i}/>
+          <PrintChart key={i} title={x.title} desc={x.description}/>
         )
       })}
     </div>
