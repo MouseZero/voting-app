@@ -27,8 +27,6 @@ module.exports = {
 
   createChart: (token, chart) => {
     return new Promise((resolve, reject) => {
-      console.log('token', token);
-      console.log('chart', chart);
       $.ajax((baseUrl + 'create/chart'), {
         type: 'POST',
         dataType: 'json',
@@ -37,11 +35,40 @@ module.exports = {
           desc: chart.desc,
           data: JSON.stringify(chart.points)
         },
+
+        success: function(data){
+          data.success && resolve(data);
+          reject(data.message);
+        },
+
+        error: function(){
+          reject('Could not create chart. Server could be down');
+        },
+
         beforeSend: function (jqXHR){
           jqXHR.setRequestHeader('x-access-token', token);
           jqXHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         }
-      })
+      });
+    });
+  },
+
+  getCharts: (token) => {
+    return new Promise((resolve, reject) => {
+      $.ajax((baseUrl + 'charts'), {
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'x-access-token': token
+        },
+        success: function(data){
+          data.success && resolve(data);
+          reject(data.message || 'Did not get chart data from request to service');
+        },
+        error: (jqXHR, text, errorThrown)=>{
+          reject('Error trying to get polls from RESTful service');
+        }
+      });
     });
   }
 

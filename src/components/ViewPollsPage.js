@@ -1,11 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-function viewPollsPage() {
+const printChart = ({ title }) => {
   return (
     <div>
-      View Polls
+      This is a chart area
+    </div>
+  )
+}
+
+function viewPollsPage({ charts }) {
+  console.log(charts);
+  return (
+    <div>
+      <h1>Your Polls</h1>
+      {charts.map((elem, i)=>{
+        return (
+          <printChart key={i}/>
+        )
+      })}
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    charts: state.charts
+  }
+}
 
-export default viewPollsPage;
+export default connect(mapStateToProps)(viewPollsPage);

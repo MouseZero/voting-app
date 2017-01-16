@@ -4,6 +4,7 @@ import loginActions from '../actions/loginActions';
 import { objectToString } from '../debugging/util';
 import { changeToken } from '../actions/loginActions';
 import { getNewToken } from '../helpers/backendInterface';
+import { updateCharts } from '../helpers/commonDispatchers.js';
 
 class LoginPage extends React.Component{
   constructor(props){
@@ -13,9 +14,11 @@ class LoginPage extends React.Component{
 
   login(){
     const closureSetToken = this.props.setToken;
+    const closureUpdateCharts = this.props.updateAllCharts;
     getNewToken(this.nameInput.value, this.passwordInput.value)
     .then(function(data){
       closureSetToken(data.token);
+      closureUpdateCharts(data.token);
     })
     .catch(function(err){
       //TODO Replace with toaster
@@ -47,7 +50,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    setToken: (token) => dispatch(changeToken(token))
+    setToken: (token) => dispatch(changeToken(token)),
+    updateAllCharts: (token) => updateCharts(token, dispatch)
   }
 }
 module.exports = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
