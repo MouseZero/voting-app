@@ -1,6 +1,7 @@
 const React = require('react');
 import { connect } from 'react-redux';
 import { createChart } from '../helpers/backendInterface';
+import { setChartAction } from '../actions/chartActions.js'
 
 const inputBox = function(props) {
   return (
@@ -16,6 +17,7 @@ class createPollsPage extends React.Component{
   constructor(props){
     super(props);
     this.sendForChartCreation = this.sendForChartCreation.bind(this);
+    this.changeCharts = this.changeCharts.bind(this);
   }
 
   sendForChartCreation(){
@@ -26,10 +28,13 @@ class createPollsPage extends React.Component{
         title: this.title.value,
         desc:  this.desc.value,
         points
-      },
-      function(data){
-        console.log('data I received: ' + data);
-    });
+      })
+      .then()
+      .catch(err=>console.log(err))
+  }
+
+  changeCharts(){
+    this.props.setCharts(['foo', 'bar', 'baz', 'qux'])
   }
 
   render() {
@@ -50,6 +55,8 @@ class createPollsPage extends React.Component{
         <div>
           {this.props.token}
         </div>
+        <button onClick={this.changeCharts}>change charts</button>
+        {this.props.charts}
       </div>
     );
   }
@@ -61,8 +68,14 @@ createPollsPage.propTypes = {
 };
 const mapStateToProps = (state) => {
   return {
-    token: state.login.token
+    token: state.login.token,
+    charts: state.charts
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    setCharts: (charts) => dispatch(setChartAction(charts))
   }
 }
 
-export default connect(mapStateToProps)(createPollsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(createPollsPage);

@@ -1,7 +1,8 @@
-export default function(state = {charts: {}}, action){
+export default function(state = [], action){
   switch(action.type){
-    case 'ADD_CHART':
-      return [...state, action.chart]
+
+    case 'SET_CHART':
+      return [action.charts];
 
     default:
       return state;
