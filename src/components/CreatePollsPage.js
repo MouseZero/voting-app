@@ -1,7 +1,7 @@
 const React = require('react');
 import { connect } from 'react-redux';
 import { createChart } from '../helpers/backendInterface';
-import { setChartAction } from '../actions/chartActions.js'
+import { updateCharts } from '../helpers/commonDispatchers.js'
 
 const inputBox = function(props) {
   return (
@@ -17,24 +17,20 @@ class createPollsPage extends React.Component{
   constructor(props){
     super(props);
     this.sendForChartCreation = this.sendForChartCreation.bind(this);
-    this.changeCharts = this.changeCharts.bind(this);
   }
 
   sendForChartCreation(){
     const points = this.point.reduce((p, x)=>{
       return (x.value) ? Object.assign({}, p, {[x.value]: 0}) : p;
     }, {});
-    createChart(this.props.token, {
+    const token = this.props.token;
+    createChart(token, {
         title: this.title.value,
         desc:  this.desc.value,
         points
-      })
-      .then()
-      .catch(err=>console.log(err))
-  }
-
-  changeCharts(){
-    this.props.setCharts(['foo', 'bar', 'baz', 'qux'])
+    })
+    .then(_ => this.props.updateAllCharts(token))
+    .catch(err=>console.log(err))
   }
 
   render() {
@@ -55,26 +51,19 @@ class createPollsPage extends React.Component{
         <div>
           {this.props.token}
         </div>
-        <button onClick={this.changeCharts}>change charts</button>
-        {this.props.charts}
       </div>
     );
   }
 }
 
-createPollsPage.propTypes = {
-  loggedIn: React.PropTypes.bool,
-  updateLogInStatus: React.PropTypes.func
-};
 const mapStateToProps = (state) => {
   return {
-    token: state.login.token,
-    charts: state.charts
+    token: state.login.token
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    setCharts: (charts) => dispatch(setChartAction(charts))
+    updateAllCharts: (token) => updateCharts(token, dispatch)
   }
 }
 
