@@ -1,16 +1,21 @@
 const React = require('react');
 import { connect } from 'react-redux';
 import { createChart } from '../helpers/backendInterface';
-import { updateCharts } from '../helpers/commonDispatchers.js'
+import { updateCharts } from '../helpers/commonDispatchers';
 
 const inputBox = function(props) {
   return (
     <div key={props.key}>
       {props.msg}:&nbsp;
-      <input ref={props.ref} type="text"></input>
+      <input ref={props.ref} type="text"/>
     </div>
-  )
-}
+  );
+};
+inputBox.propTypes = {
+  key: React.PropTypes.number,
+  msg: React.PropTypes.string,
+  ref: React.PropTypes.object
+};
 
 
 class createPollsPage extends React.Component{
@@ -18,7 +23,7 @@ class createPollsPage extends React.Component{
     super(props);
     this.state = {
       numberOfPoints: 1
-    }
+    };
     this.sendForChartCreation = this.sendForChartCreation.bind(this);
     this.decrementPoints = this.decrementPoints.bind(this);
     this.incrementPoints = this.incrementPoints.bind(this);
@@ -27,11 +32,11 @@ class createPollsPage extends React.Component{
 
   decrementPoints(){
     this.state.numberOfPoints > 1
-      && this.setState({numberOfPoints: this.state.numberOfPoints - 1})
+      && this.setState({numberOfPoints: this.state.numberOfPoints - 1});
   }
 
   incrementPoints(){
-    this.setState({numberOfPoints: this.state.numberOfPoints + 1})
+    this.setState({numberOfPoints: this.state.numberOfPoints + 1});
   }
 
   sendForChartCreation(){
@@ -45,7 +50,7 @@ class createPollsPage extends React.Component{
         points
     })
     .then(_ => this.props.updateAllCharts(token))
-    .catch(err=>console.log(err))
+    .catch(err=>console.log(err));
   }
 
   pointInputs(numberOf, points){
@@ -55,20 +60,23 @@ class createPollsPage extends React.Component{
         ref: node=>{points[i] = node},
         msg: 'Point',
         key: i
-      })
+      });
     }
     return displayPoints;
   }
 
   render() {
     this.point = [];
-    const pointInputs = new Array(this.state.numberOfPoints)
+    const pointInputs = new Array(this.state.numberOfPoints);
     return (
       <div>
         {this.state.numberOfPoints}
         <br />
         <button onClick={this.incrementPoints}>inc</button><button onClick={this.decrementPoints}>dec</button>
-        {inputBox({ref: node=>{this.title = node}, msg: 'Title'})}
+        {inputBox({
+          ref: node=>{this.title = node},
+          msg: 'Title'
+        })}
         {inputBox({ref: node=>{this.desc = node}, msg: 'Description'})}
         <button onClick={this.sendForChartCreation}>Create Poll</button>
         <div>
@@ -79,16 +87,20 @@ class createPollsPage extends React.Component{
     );
   }
 }
+createPollsPage.propTypes = {
+  token: React.PropTypes.string,
+  updateAllCharts: React.PropTypes.function
+};
 
 const mapStateToProps = (state) => {
   return {
     token: state.login.token
   }
-}
+};
 const mapDispatchToProps = dispatch => {
   return {
     updateAllCharts: (token) => updateCharts(token, dispatch)
   }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(createPollsPage);
