@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 class App extends React.Component {
   constructor(props){
@@ -8,6 +9,7 @@ class App extends React.Component {
       loggedIn: false
     };
     this.BarLink = this.BarLink.bind(this);
+    this.LoginSlashProfile = this.LoginSlashProfile.bind(this);
   }
 
   BarLink(props){
@@ -22,6 +24,18 @@ class App extends React.Component {
     );
   }
 
+  LoginSlashProfile(props){
+    if(props.token){
+      return(
+        <this.BarLink uri="/profile" text="Profile" glyph="user" />
+      )
+    }else{
+      return(
+        <this.BarLink uri="/login" text="Login" glyph="user" />
+      )
+    }
+  }
+
   render(){
     return (
       <div>
@@ -32,7 +46,7 @@ class App extends React.Component {
                 <this.BarLink uri="/" text="Home" glyph="home" />
                 <this.BarLink uri="/view" text="View Polls" glyph="stats" />
                 <this.BarLink uri="/create" text="Create" glyph="plus" />
-                <this.BarLink uri="/login" text="Login" glyph="user" />
+                <this.LoginSlashProfile token={this.props.token}/>
               </tr>
             </tbody>
           </table>
@@ -47,9 +61,13 @@ class App extends React.Component {
     );
   }
 }
-
 App.propTypes = {
   children: PropTypes.element,
 };
+const mapStateToProps = (state) => {
+  return {
+    token: state.login.token
+  };
+};
 
-export default App;
+export default connect(mapStateToProps)(App);
