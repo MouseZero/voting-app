@@ -77,11 +77,14 @@ class createPollsPage extends React.Component{
           ref: node=>{this.title = node},
           msg: 'Title'
         })}
-        {inputBox({ref: node=>{this.desc = node}, msg: 'Description'})}
+        {inputBox({
+          ref: node=>{this.desc = node},
+          msg: 'Description'
+        })}
+        {this.pointInputs(this.state.numberOfPoints, this.point)}
         <button onClick={this.sendForChartCreation}>Create Poll</button>
         <div>
           {this.props.token}
-          {this.pointInputs(this.state.numberOfPoints, this.point)}
         </div>
       </div>
     );
