@@ -60,7 +60,6 @@ class createPollsPage extends React.Component{
     return displayPoints;
   }
 
-          // inputBox({ref: node=>{this.point[i] = node}, msg: 'Point 0'})
   render() {
     this.point = [];
     const pointInputs = new Array(this.state.numberOfPoints)
