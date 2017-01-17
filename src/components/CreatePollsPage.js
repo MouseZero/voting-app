@@ -16,7 +16,22 @@ const inputBox = function(props) {
 class createPollsPage extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      numberOfPoints: 1
+    }
     this.sendForChartCreation = this.sendForChartCreation.bind(this);
+    this.decrementPoints = this.decrementPoints.bind(this);
+    this.incrementPoints = this.incrementPoints.bind(this);
+    this.pointInputs = this.pointInputs.bind(this);
+  }
+
+  decrementPoints(){
+    this.state.numberOfPoints > 1
+      && this.setState({numberOfPoints: this.state.numberOfPoints - 1})
+  }
+
+  incrementPoints(){
+    this.setState({numberOfPoints: this.state.numberOfPoints + 1})
   }
 
   sendForChartCreation(){
@@ -33,23 +48,33 @@ class createPollsPage extends React.Component{
     .catch(err=>console.log(err))
   }
 
+  pointInputs(numberOf){
+    const displayPoints = new Array(numberOf);
+    for (var i=0; i<numberOf; i++){
+      displayPoints[i] = inputBox({
+        ref: node=>{this.point[i] = node},
+        msg: 'Point',
+        key: i
+      })
+    }
+    return displayPoints;
+  }
+
+          // inputBox({ref: node=>{this.point[i] = node}, msg: 'Point 0'})
   render() {
     this.point = [];
+    const pointInputs = new Array(this.state.numberOfPoints)
     return (
       <div>
+        {this.state.numberOfPoints}
+        <br />
+        <button onClick={this.incrementPoints}>inc</button><button onClick={this.decrementPoints}>dec</button>
         {inputBox({ref: node=>{this.title = node}, msg: 'Title'})}
         {inputBox({ref: node=>{this.desc = node}, msg: 'Description'})}
-        {inputBox({ref: node=>{this.point[0] = node}, msg: 'Point 0'})}
-        {inputBox({ref: node=>{this.point[1] = node}, msg: 'Point 1'})}
-        {inputBox({ref: node=>{this.point[2] = node}, msg: 'Point 2'})}
-        {inputBox({ref: node=>{this.point[3] = node}, msg: 'Point 3'})}
-        {inputBox({ref: node=>{this.point[4] = node}, msg: 'Point 4'})}
-        {inputBox({ref: node=>{this.point[5] = node}, msg: 'Point 5'})}
-        {inputBox({ref: node=>{this.point[6] = node}, msg: 'Point 6'})}
-        {inputBox({ref: node=>{this.point[7] = node}, msg: 'Point 7'})}
         <button onClick={this.sendForChartCreation}>Create Poll</button>
         <div>
           {this.props.token}
+          {this.pointInputs(this.state.numberOfPoints)}
         </div>
       </div>
     );
