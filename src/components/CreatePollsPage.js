@@ -48,11 +48,11 @@ class createPollsPage extends React.Component{
     .catch(err=>console.log(err))
   }
 
-  pointInputs(numberOf){
+  pointInputs(numberOf, points){
     const displayPoints = new Array(numberOf);
     for (var i=0; i<numberOf; i++){
       displayPoints[i] = inputBox({
-        ref: node=>{this.point[i] = node},
+        ref: node=>{points[i] = node},
         msg: 'Point',
         key: i
       })
@@ -73,7 +73,7 @@ class createPollsPage extends React.Component{
         <button onClick={this.sendForChartCreation}>Create Poll</button>
         <div>
           {this.props.token}
-          {this.pointInputs(this.state.numberOfPoints)}
+          {this.pointInputs(this.state.numberOfPoints, this.point)}
         </div>
       </div>
     );
