@@ -5,7 +5,7 @@ import { updateCharts } from '../helpers/commonDispatchers.js'
 
 const inputBox = function(props) {
   return (
-    <div>
+    <div key={props.key}>
       {props.msg}:&nbsp;
       <input ref={props.ref} type="text"></input>
     </div>
