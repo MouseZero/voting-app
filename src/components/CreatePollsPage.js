@@ -2,6 +2,7 @@ const React = require('react');
 import { connect } from 'react-redux';
 import { createChart } from '../helpers/backendInterface';
 import { updateCharts } from '../helpers/commonDispatchers';
+import { log, LOW } from '../helpers/log';
 
 const inputBox = function(props) {
   return (
@@ -50,7 +51,7 @@ class createPollsPage extends React.Component{
         points
     })
     .then(_ => this.props.updateAllCharts(token))
-    .catch(err=>console.log(err));
+    .catch(err=>log(err, LOW));
   }
 
   pointInputs(numberOf, points){

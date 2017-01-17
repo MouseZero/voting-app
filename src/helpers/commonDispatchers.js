@@ -1,5 +1,6 @@
-import { setChartAction } from '../actions/chartActions.js';
-import { getCharts } from '../helpers/backendInterface.js';
+import { setChartAction } from '../actions/chartActions';
+import { getCharts } from '../helpers/backendInterface';
+import { log, LOW } from '../helpers/log';
 
 module.exports = {
 
@@ -8,7 +9,7 @@ module.exports = {
       .then(data => {
         dispatch(setChartAction(data.charts));
       })
-      .catch(err => console.log(err));
+      .catch(err => log(err, LOW));
     }
 
 };
