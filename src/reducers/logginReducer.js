@@ -1,4 +1,4 @@
-export default function(state = {token: "none"}, action){
+export default function(state = {token: ""}, action){
   switch(action.type){
 
     case 'CHANGE_TOKEN':
