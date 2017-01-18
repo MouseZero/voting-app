@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 function PollPage(props){
   return(
@@ -8,5 +9,10 @@ function PollPage(props){
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    token: state.login.token
+  }
+}
 
-export default PollPage;
+export default connect(mapStateToProps)(PollPage);

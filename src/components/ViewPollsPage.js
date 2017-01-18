@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 function PrintChart(props) {
   return (
     <div>
+      <Link to={"poll/" + props.pollId}>Show</Link>
+      <br />
       Title: {props.title}
       <br />
       Desc: {props.desc}
@@ -19,7 +22,7 @@ function viewPollsPage({ charts }) {
       <h1>Your Polls</h1>
       {charts.map( (x, i)=> {
         return (
-          <PrintChart key={i} title={x.title} desc={x.description}/>
+          <PrintChart key={i} pollId={x.id} title={x.title} desc={x.description}/>
         )
       })}
     </div>
