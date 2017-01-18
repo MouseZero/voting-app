@@ -9,7 +9,7 @@ module.exports = {
         dataType: 'json',
         data: {
           name: name,
-          password, password
+          password
         },
 
         success: function(data){
@@ -22,7 +22,7 @@ module.exports = {
           reject('Could not log-in. Server could be down');
         }
       });
-    })
+    });
   },
 
   createChart: (token, chart) => {
@@ -65,7 +65,30 @@ module.exports = {
           data.success && resolve(data);
           reject(data.message || 'Did not get chart data from request to service');
         },
-        error: (jqXHR, text, errorThrown)=>{
+        error: (jqXHR, text, errorThrown) => {
+          reject('Error trying to get polls from RESTful service');
+        }
+      });
+    });
+  },
+
+  getChart: (token, pollId) => {
+    console.log('backendInterface got this as a token: ', token);
+    return new Promise((resolve, reject) => {
+      $.ajax((baseUrl + 'chart'), {
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          chartId: pollId
+        },
+        headers: {
+          'x-access-token': token
+        },
+        success: function(data){
+          data.success && resolve(data);
+          reject(data.message || 'Did not get chart data from request to service');
+        },
+        error: (jqXHR, text, errorThrown) => {
           reject('Error trying to get polls from RESTful service');
         }
       });
