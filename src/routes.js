@@ -17,7 +17,7 @@ export default (
     <Route path="login" components={LoginPage}/>
     <Route path="view" components={ViewPolls}/>
     <Route path="profile" components={ProfilePage}/>
-    <Route path="poll" components={PollPage}/>
+    <Route path="poll/:pollid" components={PollPage}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
