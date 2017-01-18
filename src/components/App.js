@@ -16,7 +16,7 @@ class App extends React.Component {
     const classes = "nav-icon glyphicon glyphicon-" + props.glyph;
     return (
       <td className="nav-button">
-        <Link to={props.uri}>
+        <Link className="nav-link" to={props.uri}>
           {props.text}
           <span className={classes} />
         </Link>

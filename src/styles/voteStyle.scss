@@ -34,10 +34,13 @@ a:hover {
 }
 
 .nav-button {
-  padding-left: 3vw;
-  padding-right: 3vw;
   border-left: 1px $red-dark solid;
   border-right: 1px $red-dark solid;
+}
+
+.nav-link {
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
 .nav-button:hover {
@@ -105,5 +108,3 @@ h1 {
 .btn-container {
   text-align: center;
 }
-
-
