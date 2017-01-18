@@ -29,6 +29,7 @@ class LoginPage extends React.Component{
   render(){
     return (
       <div>
+        <h1>Login</h1>
         User: <input type="text" ref={node => {this.nameInput = node}}></input>
         <br />
         Password: <input type="password" ref={node => this.passwordInput = node}></input>
