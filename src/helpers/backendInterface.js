@@ -73,7 +73,6 @@ module.exports = {
   },
 
   getChart: (token, pollId) => {
-    console.log('backendInterface got this as a token: ', token);
     return new Promise((resolve, reject) => {
       $.ajax((baseUrl + 'chart'), {
         type: 'GET',
