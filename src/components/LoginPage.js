@@ -46,12 +46,12 @@ class LoginPage extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
-    token: state.login.token
+    token: localStorage.token
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    setToken: (token) => dispatch(changeToken(token)),
+    setToken: (token) => localStorage.token = token,
     updateAllCharts: (token) => updateCharts(token, dispatch)
   }
 }

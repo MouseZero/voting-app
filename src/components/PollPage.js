@@ -5,8 +5,8 @@ import { getChart } from '../helpers/backendInterface';
 function PollPage(props){
   console.log('pollid:', props.params.pollid);
   getChart(props.token, props.params.pollid)
-  .then(function(data){
-    console.log(data);
+  .then(function({ info }){
+    console.log(info[0]);
   })
   .catch(function(err){
     console.log('Error': err);
@@ -21,7 +21,7 @@ function PollPage(props){
 }
 const mapStateToProps = (state) => {
   return {
-    token: state.login.token
+    token: localStorage.token
   }
 }
 
