@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { updateCharts } from '../helpers/commonDispatchers.js';
+import { updateCharts } from '../helpers/commonDispatchers';
 
 function PrintChart(props) {
   return (
@@ -11,12 +11,17 @@ function PrintChart(props) {
       Title: {props.title}
       <br />
       Desc: {props.desc}
-      <hr></hr>
+      <hr />
     </div>
   );
 }
+PrintChart.propTypes = {
+  pollId: React.PropTypes.number,
+  title: React.PropTypes.string,
+  desc: React.PropTypes.string
+};
 
-function viewPollsPage({ charts, token, updateAllCharts }) {
+function ViewPollsPage({ charts, token, updateAllCharts }) {
   charts.length || updateAllCharts(token);
   return (
     <div>
@@ -24,11 +29,16 @@ function viewPollsPage({ charts, token, updateAllCharts }) {
       {charts.map( (x, i)=> {
         return (
           <PrintChart key={i} pollId={x.id} title={x.title} desc={x.description}/>
-        )
+        );
       })}
     </div>
   );
 }
+ViewPollsPage.propTypes = {
+  charts: React.PropTypes.array,
+  token: React.PropTypes.string,
+  updateAllCharts: React.PropTypes.function
+};
 const mapStateToProps = (state) => {
   return {
     charts: state.charts,
@@ -41,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(viewPollsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ViewPollsPage);
