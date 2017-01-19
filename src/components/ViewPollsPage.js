@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { updateCharts } from '../helpers/commonDispatchers.js';
 
 function PrintChart(props) {
   return (
@@ -12,11 +13,11 @@ function PrintChart(props) {
       Desc: {props.desc}
       <hr></hr>
     </div>
-  )
+  );
 }
 
-function viewPollsPage({ charts }) {
-  console.log(charts);
+function viewPollsPage({ charts, token, updateAllCharts }) {
+  charts.length || updateAllCharts(token);
   return (
     <div>
       <h1>Your Polls</h1>
@@ -30,8 +31,14 @@ function viewPollsPage({ charts }) {
 }
 const mapStateToProps = (state) => {
   return {
-    charts: state.charts
-  }
-}
+    charts: state.charts,
+    token: localStorage.token
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateAllCharts: (token) => updateCharts(token, dispatch)
+  };
+};
 
-export default connect(mapStateToProps)(viewPollsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(viewPollsPage);
