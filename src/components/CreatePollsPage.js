@@ -50,15 +50,15 @@ class createPollsPage extends React.Component{
         desc:  this.desc.value,
         points
     })
-    .then(_ => this.props.updateAllCharts(token))
+    .then( () => this.props.updateAllCharts(token))
     .catch(err=>log(err, LOW));
   }
 
   pointInputs(numberOf, points){
     const displayPoints = new Array(numberOf);
-    for (var i=0; i<numberOf; i++){
+    for (let i=0; i<numberOf; i++){
       displayPoints[i] = inputBox({
-        ref: node=>{points[i] = node},
+        ref: node => points[i] = node,
         msg: 'Point',
         key: i
       });
@@ -76,11 +76,11 @@ class createPollsPage extends React.Component{
         <br />
         <button onClick={this.incrementPoints}>inc</button><button onClick={this.decrementPoints}>dec</button>
         {inputBox({
-          ref: node=>{this.title = node},
+          ref: node => this.title = node,
           msg: 'Title'
         })}
         {inputBox({
-          ref: node=>{this.desc = node},
+          ref: node => this.desc = node,
           msg: 'Description'
         })}
         {this.pointInputs(this.state.numberOfPoints, this.point)}
@@ -100,12 +100,12 @@ createPollsPage.propTypes = {
 const mapStateToProps = (state) => {
   return {
     token: state.login.token
-  }
+  };
 };
 const mapDispatchToProps = dispatch => {
   return {
     updateAllCharts: (token) => updateCharts(token, dispatch)
-  }
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(createPollsPage);
