@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
-import loginActions from '../actions/loginActions';
-import { objectToString } from '../debugging/util';
-import { changeToken } from '../actions/loginActions';
 import { getNewToken } from '../helpers/backendInterface';
 import { updateCharts } from '../helpers/commonDispatchers.js';
+import { log, LOW } from '../helpers/log';
 
 class LoginPage extends React.Component{
   constructor(props){
-    super(props)
+    super(props);
     this.login = this.login.bind(this);
   }
 
@@ -22,7 +20,7 @@ class LoginPage extends React.Component{
     })
     .catch(function(err){
       //TODO Replace with toaster
-      console.log(err.message);
+      log(err.message, LOW);
     });
   }
 
@@ -30,7 +28,7 @@ class LoginPage extends React.Component{
     return (
       <div>
         <h1>Login</h1>
-        User: <input type="text" ref={node => {this.nameInput = node}}></input>
+        User: <input type="text" ref={node => this.nameInput = node}></input>
         <br />
         Password: <input type="password" ref={node => this.passwordInput = node}></input>
         <br />
@@ -43,16 +41,20 @@ class LoginPage extends React.Component{
     )
   }
 }
-
+LoginPage.propTypes = {
+  updateCharts: PropTypes.function,
+  setToken: PropTypes.function,
+  updateAllCharts: PropTypes.function
+}
 const mapStateToProps = (state) => {
   return {
     token: localStorage.token
-  }
-}
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     setToken: (token) => localStorage.token = token,
     updateAllCharts: (token) => updateCharts(token, dispatch)
-  }
-}
+  };
+};
 module.exports = connect(mapStateToProps, mapDispatchToProps)(LoginPage);

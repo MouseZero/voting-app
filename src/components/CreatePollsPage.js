@@ -68,7 +68,6 @@ class createPollsPage extends React.Component{
 
   render() {
     this.point = [];
-    const pointInputs = new Array(this.state.numberOfPoints);
     return (
       <div>
         <h1>Create A Poll</h1>
