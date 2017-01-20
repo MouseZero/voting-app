@@ -7,10 +7,10 @@ function objectToString(obj, depth, spacesToIndent = 0){
       + obj[key]
       + '\n'
       + objectToString(obj[key], depth - 1, spacesToIndent + 2);
-  })
+  });
   return list.join("\n");
 }
 
 module.exports = {
   objectToString: objectToString
-}
+};

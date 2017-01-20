@@ -9,7 +9,7 @@ class ProfilePage extends React.Component {
   }
 
   logoff(){
-    this.props.logout()
+    this.props.logout();
   }
 
   render(){
@@ -18,18 +18,21 @@ class ProfilePage extends React.Component {
         <h1>Profile Page</h1>
         <button onClick={this.logoff}>Log Off</button>
       </div>
-    )
+    );
   }
 }
+ProfilePage.propTypes = {
+  logout: React.PropTypes.function
+};
 const mapStateToProps = (state) => {
   return {
     token: state.login.token
-  }
-}
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout())
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

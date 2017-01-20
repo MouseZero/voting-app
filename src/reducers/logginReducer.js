@@ -6,7 +6,7 @@ export default function(state = {token: ""}, action){
         {},
         state,
         {token: action.token}
-      )
+      );
 
     default:
       return state;
