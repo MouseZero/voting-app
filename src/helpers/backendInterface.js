@@ -65,7 +65,7 @@ module.exports = {
           data.success && resolve(data);
           reject(data.message || 'Did not get chart data from request to service');
         },
-        error: (jqXHR, text, errorThrown) => {
+        error: () => {
           reject('Error trying to get polls from RESTful service');
         }
       });
@@ -87,7 +87,7 @@ module.exports = {
           data.success && resolve(data);
           reject(data.message || 'Did not get chart data from request to service');
         },
-        error: (jqXHR, text, errorThrown) => {
+        error: () => {
           reject('Error trying to get polls from RESTful service');
         }
       });

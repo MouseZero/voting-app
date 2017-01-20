@@ -1,14 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import loginActions from '../actions/loginActions';
-import { objectToString } from '../debugging/util';
-import { changeToken } from '../actions/loginActions';
 import { getNewToken } from '../helpers/backendInterface';
-import { updateCharts } from '../helpers/commonDispatchers.js';
+import { log, LOW } from '../helpers/log.js';
+import { updateCharts } from '../helpers/commonDispatchers';
 
 class LoginPage extends React.Component{
   constructor(props){
-    super(props)
+    super(props);
     this.login = this.login.bind(this);
   }
 
@@ -21,8 +19,7 @@ class LoginPage extends React.Component{
       closureUpdateCharts(data.token);
     })
     .catch(function(err){
-      //TODO Replace with toaster
-      console.log(err.message);
+      log(err.message, LOW);
     });
   }
 
@@ -30,9 +27,9 @@ class LoginPage extends React.Component{
     return (
       <div>
         <h1>Login</h1>
-        User: <input type="text" ref={node => {this.nameInput = node}}></input>
+        User: <input type="text" ref={node => this.nameInput = node}/>
         <br />
-        Password: <input type="password" ref={node => this.passwordInput = node}></input>
+        Password: <input type="password" ref={node => this.passwordInput = node}/>
         <br />
         <button onClick={this.login} >LogIn</button>
         <br />
@@ -40,19 +37,23 @@ class LoginPage extends React.Component{
         <br />
         Current Token: {this.props.token}
       </div>
-    )
+    );
   }
 }
-
-const mapStateToProps = (state) => {
+LoginPage.propTypes = {
+  setToken: React.PropTypes.function,
+  updateAllCharts: React.PropTypes.function,
+  token: React.PropTypes.string
+};
+const mapStateToProps = () => {
   return {
     token: localStorage.token
-  }
-}
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     setToken: (token) => localStorage.token = token,
     updateAllCharts: (token) => updateCharts(token, dispatch)
-  }
-}
-module.exports = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

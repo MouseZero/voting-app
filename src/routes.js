@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
+// Components
 import App from './components/App';
 import NotFoundPage from './components/NotFoundPage';
 import HomePage from './components/VoteHomePage';
