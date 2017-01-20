@@ -1,13 +1,8 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import { getNewToken } from '../helpers/backendInterface';
-<<<<<<< HEAD
-import { log, LOW } from '../helpers/log.js';
-import { updateCharts } from '../helpers/commonDispatchers';
-=======
 import { updateCharts } from '../helpers/commonDispatchers.js';
 import { log, LOW } from '../helpers/log';
->>>>>>> warningFixes
 
 class LoginPage extends React.Component{
   constructor(props){
@@ -24,10 +19,6 @@ class LoginPage extends React.Component{
       closureUpdateCharts(data.token);
     })
     .catch(function(err){
-<<<<<<< HEAD
-=======
-      //TODO Replace with toaster
->>>>>>> warningFixes
       log(err.message, LOW);
     });
   }
@@ -50,16 +41,10 @@ class LoginPage extends React.Component{
   }
 }
 LoginPage.propTypes = {
-<<<<<<< HEAD
-  setToken: React.PropTypes.function,
-  updateAllCharts: React.PropTypes.function,
-  token: React.PropTypes.string
-=======
   updateCharts: PropTypes.function,
   setToken: PropTypes.function,
   updateAllCharts: PropTypes.function,
   token: PropTypes.string
->>>>>>> warningFixes
 };
 const mapStateToProps = () => {
   return {
@@ -72,8 +57,4 @@ const mapDispatchToProps = (dispatch) => {
     updateAllCharts: (token) => updateCharts(token, dispatch)
   };
 };
-<<<<<<< HEAD
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
-=======
-module.exports = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
->>>>>>> warningFixes

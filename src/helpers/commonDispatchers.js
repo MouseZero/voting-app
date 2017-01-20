@@ -10,4 +10,4 @@ function updateCharts (token, dispatch){
     .catch(err => log(err, LOW));
 }
 
-export default {updateCharts};
+module.exports = {updateCharts}
