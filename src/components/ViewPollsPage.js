@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { updateCharts } from '../helpers/commonDispatchers';
@@ -16,9 +16,9 @@ function PrintChart(props) {
   );
 }
 PrintChart.propTypes = {
-  pollId: React.PropTypes.number,
-  title: React.PropTypes.string,
-  desc: React.PropTypes.string
+  pollId: PropTypes.number,
+  title: PropTypes.string,
+  desc: PropTypes.string
 };
 
 function ViewPollsPage({ charts, token, updateAllCharts }) {
@@ -35,8 +35,8 @@ function ViewPollsPage({ charts, token, updateAllCharts }) {
   );
 }
 ViewPollsPage.propTypes = {
-  charts: React.PropTypes.array,
-  token: React.PropTypes.string,
+  charts: PropTypes.array,
+  token: PropTypes.string,
   updateAllCharts: React.PropTypes.function
 };
 const mapStateToProps = (state) => {
