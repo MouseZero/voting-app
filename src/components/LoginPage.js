@@ -28,9 +28,9 @@ class LoginPage extends React.Component{
     return (
       <div>
         <h1>Login</h1>
-        User: <input type="text" ref={node => this.nameInput = node}></input>
+        User: <input type="text" ref={node => this.nameInput = node}/>
         <br />
-        Password: <input type="password" ref={node => this.passwordInput = node}></input>
+        Password: <input type="password" ref={node => this.passwordInput = node}/>
         <br />
         <button onClick={this.login} >LogIn</button>
         <br />
@@ -38,15 +38,16 @@ class LoginPage extends React.Component{
         <br />
         Current Token: {this.props.token}
       </div>
-    )
+    );
   }
 }
 LoginPage.propTypes = {
   updateCharts: PropTypes.function,
   setToken: PropTypes.function,
-  updateAllCharts: PropTypes.function
-}
-const mapStateToProps = (state) => {
+  updateAllCharts: PropTypes.function,
+  token: PropTypes.string
+};
+const mapStateToProps = () => {
   return {
     token: localStorage.token
   };
