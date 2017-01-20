@@ -28,11 +28,11 @@ class App extends React.Component {
     if(props.token){
       return(
         <this.BarLink uri="/profile" text="Profile" glyph="user" />
-      )
+      );
     }else{
       return(
         <this.BarLink uri="/login" text="Login" glyph="user" />
-      )
+      );
     }
   }
 
@@ -63,6 +63,7 @@ class App extends React.Component {
 }
 App.propTypes = {
   children: PropTypes.element,
+  token: PropTypes.string
 };
 const mapStateToProps = (state) => {
   return {

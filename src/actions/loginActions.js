@@ -3,7 +3,7 @@ module.exports = {
     return {type: 'CHANGE_TOKEN', token};
   },
 
-  logout(token){
-    return {type: 'CHANGE_TOKEN', token: ''}
+  logout(){
+    return {type: 'CHANGE_TOKEN', token: ''};
   }
-}
+};
