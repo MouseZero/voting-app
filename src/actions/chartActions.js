@@ -3,6 +3,6 @@ module.exports = {
     return {
       type: 'SET_CHART',
       charts
-    }
+    };
   }
-}
+};
