@@ -3,21 +3,7 @@ import { connect } from 'react-redux';
 import { createChart } from '../helpers/backendInterface';
 import { updateCharts } from '../helpers/commonDispatchers';
 import { log, LOW } from '../helpers/log';
-
-const inputBox = function(props) {
-  return (
-    <div key={props.key}>
-      {props.msg}:&nbsp;
-      <input ref={props.ref} type="text"/>
-    </div>
-  );
-};
-inputBox.propTypes = {
-  key: React.PropTypes.number,
-  msg: React.PropTypes.string,
-  ref: React.PropTypes.object
-};
-
+import InputBox from './InputBox';
 
 class createPollsPage extends React.Component{
   constructor(props){
@@ -57,7 +43,7 @@ class createPollsPage extends React.Component{
   pointInputs(numberOf, points){
     const displayPoints = new Array(numberOf);
     for (let i=0; i<numberOf; i++){
-      displayPoints[i] = inputBox({
+      displayPoints[i] = InputBox({
         ref: node => points[i] = node,
         msg: 'Point',
         key: i
@@ -74,11 +60,11 @@ class createPollsPage extends React.Component{
         {this.state.numberOfPoints}
         <br />
         <button onClick={this.incrementPoints}>inc</button><button onClick={this.decrementPoints}>dec</button>
-        {inputBox({
+        {InputBox({
           ref: node => this.title = node,
           msg: 'Title'
         })}
-        {inputBox({
+        {InputBox({
           ref: node => this.desc = node,
           msg: 'Description'
         })}

@@ -1,25 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { updateCharts } from '../helpers/commonDispatchers';
-
-function PrintChart(props) {
-  return (
-    <div>
-      <Link to={"poll/" + props.pollId}>Show</Link>
-      <br />
-      Title: {props.title}
-      <br />
-      Desc: {props.desc}
-      <hr />
-    </div>
-  );
-}
-PrintChart.propTypes = {
-  pollId: PropTypes.number,
-  title: PropTypes.string,
-  desc: PropTypes.string
-};
+import PrintChart from './PrintChart';
 
 function ViewPollsPage({ charts, token, updateAllCharts }) {
   charts.length || updateAllCharts(token);
