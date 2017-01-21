@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getChart } from '../helpers/backendInterface';
+import { log, LOW } from '../helpers/log';
 
 function PollPage(props){
-  console.log('pollid:', props.params.pollid);
   getChart(props.token, props.params.pollid)
   .then(function({ info }){
-    console.log(info[0]);
+    log(info[0], LOW);
   })
   .catch(function(err){
-    console.log('Error': err);
-  })
-  console.log(getChart(props.token, props.params.pollid));
+    log('Error': err, LOW);
+  });
+  log(getChart(props.token, props.params.pollid));
   return(
     <div>
       <h1>Poll Page</h1>
@@ -19,10 +19,14 @@ function PollPage(props){
     </div>
   );
 }
-const mapStateToProps = (state) => {
+PollPage.propTypes = {
+  params: {pollid: PropTypes.number},
+  token: PropTypes.string
+};
+const mapStateToProps = () => {
   return {
     token: localStorage.token
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(PollPage);
