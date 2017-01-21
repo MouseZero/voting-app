@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setChartAction } from '../actions/chartActions';
 
 class ProfilePage extends React.Component {
   constructor(props){
@@ -9,6 +10,7 @@ class ProfilePage extends React.Component {
 
   logoff(){
     localStorage.setItem('token', '');
+    this.props.logout();
     this.props.history.push('/login');
   }
 
@@ -29,5 +31,10 @@ const mapStateToProps = () => {
     token: localStorage.token
   };
 };
+const mapDispatchToProps = dispatch => {
+return {
+    logout: () => dispatch(setChartAction([]))
+  }
+}
 
-export default connect(mapStateToProps)(ProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
