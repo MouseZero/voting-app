@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { setChartAction } from '../actions/chartActions';
 
@@ -24,7 +24,8 @@ class ProfilePage extends React.Component {
   }
 }
 ProfilePage.propTypes = {
-  logout: React.PropTypes.function
+  logout: PropTypes.function,
+  history: PropTypes.function
 };
 const mapStateToProps = () => {
   return {
@@ -34,7 +35,7 @@ const mapStateToProps = () => {
 const mapDispatchToProps = dispatch => {
 return {
     logout: () => dispatch(setChartAction([]))
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
