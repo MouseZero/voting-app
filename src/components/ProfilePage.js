@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../actions/loginActions';
 
 class ProfilePage extends React.Component {
   constructor(props){
@@ -9,7 +8,7 @@ class ProfilePage extends React.Component {
   }
 
   logoff(){
-    this.props.logout();
+    localStorage.setItem('token', '');
   }
 
   render(){
@@ -24,15 +23,10 @@ class ProfilePage extends React.Component {
 ProfilePage.propTypes = {
   logout: React.PropTypes.function
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
-    token: state.login.token
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(logout())
+    token: localStorage.token
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
+export default connect(mapStateToProps)(ProfilePage);

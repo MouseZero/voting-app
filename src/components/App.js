@@ -65,9 +65,9 @@ App.propTypes = {
   children: PropTypes.element,
   token: PropTypes.string
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
-    token: state.login.token
+    token: localStorage.token
   };
 };
 
