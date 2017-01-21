@@ -9,6 +9,7 @@ class ProfilePage extends React.Component {
 
   logoff(){
     localStorage.setItem('token', '');
+    this.props.history.push('/login');
   }
 
   render(){
