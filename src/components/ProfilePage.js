@@ -24,8 +24,8 @@ class ProfilePage extends React.Component {
   }
 }
 ProfilePage.propTypes = {
-  logout: PropTypes.function,
-  history: PropTypes.function
+  logout: PropTypes.func,
+  history: PropTypes.object
 };
 const mapStateToProps = () => {
   return {
