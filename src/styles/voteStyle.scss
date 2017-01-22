@@ -41,6 +41,7 @@ a:hover {
 .nav-link {
   padding-left: 3vw;
   padding-right: 3vw;
+  padding-bottom: 3vw;
 }
 
 .nav-button:hover {
@@ -49,6 +50,11 @@ a:hover {
     color: $red-light
   }
 }
+
+.nav-link:focus {
+  outline: none;
+}
+
 
 h1 {
   color: $red-dark;
