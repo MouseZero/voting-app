@@ -15,12 +15,16 @@ function PollPage(props){
   .catch(function(err){
     log('Error': err, LOW);
   });
+  const chart = props.chart
   return(
     <div>
       <h1>Poll Page</h1>
-      {props.params.pollid}
+      id : {chart.id}
       <br />
-      id from object: {props.chart.id}
+      title: {chart.title}
+      <br />
+      description: {chart.description}
+      <br />
     </div>
   );
 }
