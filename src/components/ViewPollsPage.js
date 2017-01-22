@@ -19,7 +19,7 @@ function ViewPollsPage({ charts, token, updateAllCharts }) {
 ViewPollsPage.propTypes = {
   charts: PropTypes.array,
   token: PropTypes.string,
-  updateAllCharts: React.PropTypes.function
+  updateAllCharts: React.PropTypes.func
 };
 const mapStateToProps = (state) => {
   return {

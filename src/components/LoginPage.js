@@ -41,9 +41,9 @@ class LoginPage extends React.Component{
   }
 }
 LoginPage.propTypes = {
-  updateCharts: PropTypes.function,
-  setToken: PropTypes.function,
-  updateAllCharts: PropTypes.function,
+  updateCharts: PropTypes.func,
+  setToken: PropTypes.func,
+  updateAllCharts: PropTypes.func,
   token: PropTypes.string
 };
 const mapStateToProps = () => {

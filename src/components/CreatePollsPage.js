@@ -79,7 +79,7 @@ class createPollsPage extends React.Component{
 }
 createPollsPage.propTypes = {
   token: React.PropTypes.string,
-  updateAllCharts: React.PropTypes.function
+  updateAllCharts: React.PropTypes.func
 };
 
 const mapStateToProps = (state) => {
