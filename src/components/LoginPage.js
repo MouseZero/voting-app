@@ -13,10 +13,12 @@ class LoginPage extends React.Component{
   login(){
     const closureSetToken = this.props.setToken;
     const closureUpdateCharts = this.props.updateAllCharts;
+    const history = this.props.history;
     getNewToken(this.nameInput.value, this.passwordInput.value)
     .then(function(data){
       closureSetToken(data.token);
       closureUpdateCharts(data.token);
+      history.push('/');
     })
     .catch(function(err){
       log(err.message, LOW);
@@ -40,7 +42,8 @@ LoginPage.propTypes = {
   updateCharts: PropTypes.func,
   setToken: PropTypes.func,
   updateAllCharts: PropTypes.func,
-  token: PropTypes.string
+  token: PropTypes.string,
+  history: PropTypes.object
 };
 const mapStateToProps = () => {
   return {
