@@ -32,10 +32,6 @@ class LoginPage extends React.Component{
         Password: <input type="password" ref={node => this.passwordInput = node}/>
         <br />
         <button onClick={this.login} >LogIn</button>
-        <br />
-        {Object.keys(this.props).map(elem => elem + ", ")}
-        <br />
-        Current Token: {this.props.token}
       </div>
     );
   }

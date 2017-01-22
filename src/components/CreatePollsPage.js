@@ -70,9 +70,6 @@ class createPollsPage extends React.Component{
         })}
         {this.pointInputs(this.state.numberOfPoints, this.point)}
         <button onClick={this.sendForChartCreation}>Create Poll</button>
-        <div>
-          {this.props.token}
-        </div>
       </div>
     );
   }
