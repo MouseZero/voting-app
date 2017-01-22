@@ -37,6 +37,7 @@ function PollPage(props){
   );
 }
 PollPage.propTypes = {
+  params: PropTypes.object,
   token: PropTypes.string,
   chart: PropTypes.object,
   setDisplayChart: PropTypes.func
