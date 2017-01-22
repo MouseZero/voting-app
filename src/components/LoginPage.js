@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import { getNewToken } from '../helpers/backendInterface';
-import { updateCharts } from '../helpers/commonDispatchers.js';
 import { log, LOW } from '../helpers/log';
 
 class LoginPage extends React.Component{
@@ -11,13 +10,11 @@ class LoginPage extends React.Component{
   }
 
   login(){
-    const closureSetToken = this.props.setToken;
-    const closureUpdateCharts = this.props.updateAllCharts;
+    const setToken = this.props.setToken;
     const history = this.props.history;
     getNewToken(this.nameInput.value, this.passwordInput.value)
     .then(function(data){
-      closureSetToken(data.token);
-      closureUpdateCharts(data.token);
+      setToken(data.token);
       history.push('/');
     })
     .catch(function(err){
@@ -50,10 +47,9 @@ const mapStateToProps = () => {
     token: localStorage.token
   };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = () => {
   return {
-    setToken: (token) => localStorage.token = token,
-    updateAllCharts: (token) => updateCharts(token, dispatch)
+    setToken: (token) => localStorage.token = token
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
