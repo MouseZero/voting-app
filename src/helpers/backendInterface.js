@@ -72,16 +72,13 @@ module.exports = {
     });
   },
 
-  getChart: (token, pollId) => {
+  getChart: (pollId) => {
     return new Promise((resolve, reject) => {
       $.ajax((baseUrl + 'chart'), {
         type: 'GET',
         dataType: 'json',
         data: {
           chartId: pollId
-        },
-        headers: {
-          'x-access-token': token
         },
         success: function(data){
           data.success && resolve(data);

@@ -4,8 +4,8 @@ import { getChart } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import { setDisplayChartAction } from '../actions/chartActions';
 
-function updateOldChartData(token, id, chart, cb){
-  getChart(token, id)
+function updateOldChartData(id, chart, cb){
+  getChart(id)
   .then(function({ info }){
     if(chart.id !== info[0].id){
       cb(info[0]);
@@ -18,7 +18,6 @@ function updateOldChartData(token, id, chart, cb){
 
 function PollPage(props){
   updateOldChartData(
-    props.token,
     props.params.pollid,
     props.chart,
     props.setDisplayChart
@@ -38,13 +37,11 @@ function PollPage(props){
 }
 PollPage.propTypes = {
   params: PropTypes.object,
-  token: PropTypes.string,
   chart: PropTypes.object,
   setDisplayChart: PropTypes.func
 };
 const mapStateToProps = (state) => {
   return {
-    token: localStorage.token,
     chart: state.chart
   };
 };
