@@ -7,7 +7,7 @@ import { log, LOW } from '../helpers/log';
 
 const deletePoll = (token, updateCharts) => id => () => {
   deleteChart(token, id)
-  .then(function(data){
+  .then(function(){
     updateCharts(token);
   })
   .catch(function(err){

@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createChart } from '../helpers/backendInterface';
 import { updateCharts } from '../helpers/commonDispatchers';
@@ -27,6 +27,7 @@ class createPollsPage extends React.Component{
   }
 
   sendForChartCreation(){
+    const history = this.props.history;
     const points = this.point.reduce((p, x)=>{
       return (x.value) ? Object.assign({}, p, {[x.value]: 0}) : p;
     }, {});
@@ -37,6 +38,7 @@ class createPollsPage extends React.Component{
         points
     })
     .then( () => this.props.updateAllCharts(token))
+    .then( () => history.push('/view'))
     .catch(err=>log(err, LOW));
   }
 
@@ -75,8 +77,9 @@ class createPollsPage extends React.Component{
   }
 }
 createPollsPage.propTypes = {
-  token: React.PropTypes.string,
-  updateAllCharts: React.PropTypes.func
+  token: PropTypes.string,
+  updateAllCharts: PropTypes.func,
+  history: PropTypes.object
 };
 
 const mapStateToProps = () => {
