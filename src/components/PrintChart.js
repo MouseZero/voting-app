@@ -9,6 +9,8 @@ export default function PrintChart(props) {
       Title: {props.title}
       <br />
       Desc: {props.desc}
+      <br />
+      <button onClick={props.delete(props.pollId)}>Delete</button>
       <hr />
     </div>
   );
@@ -16,5 +18,6 @@ export default function PrintChart(props) {
 PrintChart.propTypes = {
   pollId: PropTypes.number,
   title: PropTypes.string,
-  desc: PropTypes.string
+  desc: PropTypes.string,
+  delete: PropTypes.func
 };

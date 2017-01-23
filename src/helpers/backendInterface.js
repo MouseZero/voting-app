@@ -89,6 +89,10 @@ module.exports = {
         }
       });
     });
+  },
+
+  deleteChart: (token, id) => {
+    console.log('called delete Chart for ', id);
   }
 
 };

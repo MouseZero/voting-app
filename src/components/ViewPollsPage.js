@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateCharts } from '../helpers/commonDispatchers';
+import { deleteChart } from '../helpers/backendInterface';
 import PrintChart from './PrintChart';
+
+const deletePoll = token => id => () => deleteChart(token, id);
 
 function ViewPollsPage({ charts, token, updateAllCharts }) {
   charts.length || updateAllCharts(token);
@@ -10,7 +13,13 @@ function ViewPollsPage({ charts, token, updateAllCharts }) {
       <h1>Your Polls</h1>
       {charts.map( (x, i)=> {
         return (
-          <PrintChart key={i} pollId={x.id} title={x.title} desc={x.description}/>
+          <PrintChart
+            key={i}
+            pollId={x.id}
+            title={x.title}
+            desc={x.description}
+            delete={deletePoll(token)}
+          />
         );
       })}
     </div>
