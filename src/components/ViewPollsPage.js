@@ -5,10 +5,10 @@ import { deleteChart } from '../helpers/backendInterface';
 import PrintChart from './PrintChart';
 import { log, LOW } from '../helpers/log';
 
-const deletePoll = token => id => () => {
+const deletePoll = (token, updateCharts) => id => () => {
   deleteChart(token, id)
   .then(function(data){
-    log(data, LOW);
+    updateCharts(token);
   })
   .catch(function(err){
     log('failed', LOW);
@@ -28,7 +28,7 @@ function ViewPollsPage({ charts, token, updateAllCharts }) {
             pollId={x.id}
             title={x.title}
             desc={x.description}
-            delete={deletePoll(token)}
+            delete={deletePoll(token, updateAllCharts)}
           />
         );
       })}
