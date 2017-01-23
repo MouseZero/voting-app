@@ -92,7 +92,26 @@ module.exports = {
   },
 
   deleteChart: (token, id) => {
-    console.log('called delete Chart for ', id);
+    return new Promise((resolve, reject) => {
+      $.ajax((baseUrl + 'delete/chart'), {
+        type: 'DELETE',
+        dataType: 'json',
+        data: {
+          chartId: id
+        },
+        headers: {
+          'x-access-token': token,
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function(data){
+          data.success && resolve(data);
+          reject('Connected to server but could not delete ', id);
+        },
+        error: () => {
+          reject('Error trying to delete polls from RESTful service');
+        }
+      });
+    });
   }
 
 };

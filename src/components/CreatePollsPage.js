@@ -79,9 +79,9 @@ createPollsPage.propTypes = {
   updateAllCharts: React.PropTypes.func
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
-    token: state.login.token
+    token: localStorage.token
   };
 };
 const mapDispatchToProps = dispatch => {

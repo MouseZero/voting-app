@@ -3,8 +3,18 @@ import { connect } from 'react-redux';
 import { updateCharts } from '../helpers/commonDispatchers';
 import { deleteChart } from '../helpers/backendInterface';
 import PrintChart from './PrintChart';
+import { log, LOW } from '../helpers/log';
 
-const deletePoll = token => id => () => deleteChart(token, id);
+const deletePoll = token => id => () => {
+  deleteChart(token, id)
+  .then(function(data){
+    log(data, LOW);
+  })
+  .catch(function(err){
+    log('failed', LOW);
+    log(err, LOW);
+  });
+};
 
 function ViewPollsPage({ charts, token, updateAllCharts }) {
   charts.length || updateAllCharts(token);
