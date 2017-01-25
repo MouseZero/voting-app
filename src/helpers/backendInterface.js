@@ -1,4 +1,4 @@
-const baseUrl = 'http://z3r0.info:3333/api/';
+const baseUrl = 'http://localhost:3333/api/';
 
 module.exports = {
 
@@ -109,6 +109,24 @@ module.exports = {
         },
         error: () => {
           reject('Error trying to delete polls from RESTful service');
+        }
+      });
+    });
+  },
+
+  createUser: (name, password) => {
+    return new Promise((resolve, reject) => {
+      $.ajax((baseUrl + 'create/user'), {
+        type: 'POST',
+        dataType: 'json',
+        data: { name, password },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        success: function(data){
+          data.success && resolve(data);
+          reject('Connected to server but could not create the user ' + name);
+        },
+        error: () => {
+          reject('Error trying to create the user from the RESTful serivce (is the server up?)');
         }
       });
     });
