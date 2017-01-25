@@ -12,10 +12,11 @@ class CreateUser extends Component {
   createUserRequest(){
     const name = this.userName.value;
     const password = this.password.value;
+    const history = this.props.history;
     createUser(name, password)
     .then(function (data){
       log(data, LOW);
-      // this.props.history.push('login');
+      history.push('login');
     })
     .catch(function(err){
       log(err, LOW);
