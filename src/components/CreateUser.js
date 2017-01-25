@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-// import { createUser } from '../helpers/backendInterface';
+import React, { Component, PropTypes } from 'react';
+import { createUser } from '../helpers/backendInterface';
+import { log, LOW } from '../helpers/log';
 
 
 class CreateUser extends Component {
@@ -9,8 +10,16 @@ class CreateUser extends Component {
   }
 
   createUserRequest(){
-    console.log('creating user');
-    console.log(this.userName.value, this.password.value);
+    const name = this.userName.value;
+    const password = this.password.value;
+    createUser(name, password)
+    .then(function (data){
+      log(data, LOW);
+      // this.props.history.push('login');
+    })
+    .catch(function(err){
+      log(err, LOW);
+    });
   }
 
   render(){
@@ -32,5 +41,8 @@ class CreateUser extends Component {
     );
   }
 }
+CreateUser.propTypes = {
+  history: PropTypes.object
+};
 
 export default CreateUser;
