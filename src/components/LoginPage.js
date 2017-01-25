@@ -7,6 +7,7 @@ class LoginPage extends React.Component{
   constructor(props){
     super(props);
     this.login = this.login.bind(this);
+    this.createAccount = this.createAccount.bind(this);
   }
 
   login(){
@@ -22,6 +23,10 @@ class LoginPage extends React.Component{
     });
   }
 
+  createAccount(){
+    this.props.history.push('create-user');
+  }
+
   render(){
     return (
       <div>
@@ -31,6 +36,7 @@ class LoginPage extends React.Component{
         Password: <input type="password" ref={node => this.passwordInput = node}/>
         <br />
         <button onClick={this.login} >LogIn</button>
+        <button onClick={this.createAccount}>Create Account</button>
       </div>
     );
   }

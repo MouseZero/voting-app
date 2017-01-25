@@ -10,6 +10,7 @@ import LoginPage from './components/LoginPage';
 import ViewPolls from './components/ViewPollsPage';
 import ProfilePage from './components/ProfilePage';
 import PollPage from './components/PollPage';
+import CreateUser from './components/CreateUser';
 
 export default (
   <Route path="/" component={App}>
@@ -19,6 +20,7 @@ export default (
     <Route path="view" components={ViewPolls}/>
     <Route path="profile" components={ProfilePage}/>
     <Route path="poll/:pollid" components={PollPage}/>
+    <Route path="create-user" components={CreateUser}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
