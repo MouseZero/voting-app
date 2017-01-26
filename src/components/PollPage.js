@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { getChart } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
@@ -16,24 +16,26 @@ function updateOldChartData(id, chart, cb){
   });
 }
 
-function PollPage(props){
-  updateOldChartData(
-    props.params.pollid,
-    props.chart,
-    props.setDisplayChart
-  );
-  const chart = props.chart;
-  return(
-    <div>
-      <h1>Poll Page</h1>
-      id : {chart.id}
-      <br />
-      title: {chart.title}
-      <br />
-      description: {chart.description}
-      <br />
-    </div>
-  );
+class PollPage extends Component {
+  render(){
+    updateOldChartData(
+      this.props.params.pollid,
+      this.props.chart,
+      this.props.setDisplayChart
+    );
+    const chart = this.props.chart;
+    return(
+      <div>
+        <h1>Poll Page</h1>
+        id : {chart.id}
+        <br />
+        title: {chart.title}
+        <br />
+        description: {chart.description}
+        <br />
+      </div>
+    );
+  }
 }
 PollPage.propTypes = {
   params: PropTypes.object,
