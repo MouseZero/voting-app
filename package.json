@@ -1,7 +1,7 @@
 {
-  "name": "react-slingshot",
-  "version": "5.0.0",
-  "description": "Starter kit for creating apps with React and Redux",
+  "name": "voting-app-front-end",
+  "version": "1.0",
+  "description": "This is a app where users can make polls and anyone can vote on thoughs polls",
   "engines": {
     "npm": ">=3"
   },
@@ -26,9 +26,10 @@
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/index.html"
   },
-  "author": "Cory House",
+  "author": "Russell_Murray",
   "license": "MIT",
   "dependencies": {
+    "d3": "4.4.4",
     "object-assign": "4.1.0",
     "passport": "0.3.2",
     "ramda": "0.23.0",
@@ -92,23 +93,8 @@
     "webpack-hot-middleware": "2.13.0",
     "webpack-md5-hash": "0.0.5"
   },
-  "keywords": [
-    "react",
-    "reactjs",
-    "react-router",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack",
-    "redux",
-    "flux",
-    "boilerplate",
-    "starter"
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/coryhouse/react-slingshot"
+    "url": "https://github.com/MouseZero/voting-app.git"
   }
 }
