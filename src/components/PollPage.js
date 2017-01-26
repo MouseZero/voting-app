@@ -4,21 +4,26 @@ import { getChart } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import { setDisplayChartAction } from '../actions/chartActions';
 
-function updateOldChartData(id, chart, cb){
-  getChart(id)
-  .then(function({ info }){
-    if(chart.id !== info[0].id){
-      cb(info[0]);
-    }
-  })
-  .catch(function(err){
-    log('Error': err, LOW);
-  });
-}
-
 class PollPage extends Component {
+  constructor(props){
+    super(props);
+    this.updateOldChartData = this.updateOldChartData.bind(this);
+  }
+
+  updateOldChartData(id, chart, cb){
+    getChart(id)
+    .then(function({ info }){
+      if(chart.id !== info[0].id){
+        cb(info[0]);
+      }
+    })
+    .catch(function(err){
+      log('Error': err, LOW);
+    });
+  }
+
   render(){
-    updateOldChartData(
+    this.updateOldChartData(
       this.props.params.pollid,
       this.props.chart,
       this.props.setDisplayChart
