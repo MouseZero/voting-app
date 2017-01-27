@@ -1,4 +1,5 @@
 import React from 'react';
+import BarChart from './BarChart';
 
 function voteHomePage() {
   return (
@@ -8,6 +9,9 @@ function voteHomePage() {
       <p>
         Create polls for anyone to vote on. This app will keep track of the votes and
         will show you the voting pattern of the respondents.
+      </p>
+      <p>
+        <BarChart/>
       </p>
     </div>
   );
