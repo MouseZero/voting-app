@@ -19,7 +19,14 @@ class VoteHomePage extends Component {
         <p>&nbsp;</p>
           Create polls for anyone to vote on. This app will keep track of the votes and
           will show you the voting pattern of the respondents.
-          <BarPoll />
+          <BarPoll
+            dataSet={[
+              {label: 'bananas', value: 25},
+              {label: 'oranges', value: 30},
+              {label: 'grapes', value: 50}
+            ]}
+            yAxisLabel={'Stuff'}
+          />
       </div>
     );
   }

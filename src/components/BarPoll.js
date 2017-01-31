@@ -5,26 +5,29 @@ import rd3, { BarChart } from 'react-d3-library';
 class BarPoll extends Component {
   constructor(props){
     super(props);
-    this.state = { d3: '' };
+    this.state = { d3: {
+      yAxisLabel: props.yAxisLabel,
+      dataSet: props.dataSet
+    } };
   }
 
   componentDidMount(){
-    const data = {};
-    data.width = 500;
-    data.height = 300;
-    data.dataSet = [
-      {label: 'apples', value: 25},
-      {label: 'oranges', value: 30},
-      {label: 'surfboards', value: 150}
-    ];
-    data.margins = {top: 20, right: 20, bottom: 70, left: 40};
-    data.yAxisLabel = 'Test Chart';
-    data.fill = [];
-    data.barClass = 'bar';
-    this.setState({ d3: data })
+    this.setState({ d3: Object.assign(
+        {},
+        this.state.d3,
+        {
+          width: 500,
+          height: 300,
+          margins: {top: 20, right: 20, bottom: 70, left: 40},
+          fill: [],
+          barClass: 'bar'
+        }
+      )}
+    )
   }
 
   render(){
+    console.log(this.state.d3)
     return (
       <div>
         <BarChart data={this.state.d3}/>
