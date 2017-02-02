@@ -5,10 +5,12 @@ import rd3, { BarChart } from 'react-d3-library';
 class BarPoll extends Component {
   constructor(props){
     super(props);
-    this.state = { d3: {
+    this.state = {
+      d3: {
       yAxisLabel: props.yAxisLabel,
       dataSet: props.dataSet
-    } };
+      }
+    };
   }
 
   componentDidMount(){
