@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import rd3, { BarChart } from 'react-d3-library';
+import React, { Component, PropTypes} from 'react';
+import { BarChart } from 'react-d3-library';
 
 
 class BarPoll extends Component {
@@ -25,17 +25,20 @@ class BarPoll extends Component {
           barClass: 'bar'
         }
       )}
-    )
+    );
   }
 
   render(){
-    console.log(this.state.d3)
     return (
       <div>
         <BarChart data={this.state.d3}/>
       </div>
-    )
+    );
   }
 }
+BarPoll.propTypes = {
+  yAxisLabel: PropTypes.string,
+  dataSet:    PropTypes.array
+};
 
 export default BarPoll;
