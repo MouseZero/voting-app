@@ -31,9 +31,8 @@ class PollPage extends Component {
     );
     const chart = this.props.chart;
     const data = Object.keys(chart.data).reduce((p, x) => {
-      return [...p, {value: chart.data[x], label: x}]
+      return [...p, {value: chart.data[x], label: x}];
     }, []);
-    console.log(data);
     return(
       <div>
         <h1>Poll Page</h1>
