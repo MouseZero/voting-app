@@ -6,15 +6,19 @@ class MyPoll extends Component {
   }
 
   componentDidMount(){
-    console.log(d3);
-    d3.select("#big").style("background-color", "black");
+    let svg = d3.select("svg")
+    let g = svg.append("g")
+    .attr("transform", `translation("10", "10")`)
+
+    g.append("rect")
+    .attr("class", "test")
+    .attr("width", 50)
+    .attr("height", 100)
   }
 
   render(){
     return(
-      <div id='big'>
-        Hello there guys
-      </div>
+      <svg/>
     )
   }
 }
