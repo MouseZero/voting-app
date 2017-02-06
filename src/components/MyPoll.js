@@ -24,6 +24,7 @@ class MyPoll extends Component {
       .attr("width", 10)
       .attr("height", (d) => d.value * 10)
       .attr("x", (d, i) => i * 15)
+      .attr("y", d => 70 - d.value * 10)
   }
 
   render(){
