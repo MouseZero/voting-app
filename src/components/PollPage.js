@@ -9,16 +9,12 @@ class PollPage extends Component {
   constructor(props){
     super(props);
     this.updateOldChartData = this.updateOldChartData.bind(this);
-    this.myData = this.myData.bind(this);
-  }
-
-  myData(){
-    return [
+    this.myData = [
       {value: 5, name: "apples"},
       {value: 3, name: "bananas"},
       {value: 7, name: "strawberrys"},
-      {value: 2, name: "strawberrys"},
-      {value: 6, name: "strawberrys"}
+      {value: 1, name: "blackberrys"},
+      {value: 6, name: "icecream"}
     ]
   }
 
@@ -53,7 +49,7 @@ class PollPage extends Component {
         <br />
         description: {chart.description}
         <br />
-        <MyPoll data={this.myData()}/>
+        <MyPoll data={this.myData}/>
       </div>
     );
   }

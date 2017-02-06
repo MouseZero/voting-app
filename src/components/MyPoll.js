@@ -12,13 +12,6 @@ class MyPoll extends Component {
     .attr("transform", `translation("10", "10")`)
     .attr("class", "bar")
 
-    // const data = ['thing1', 'more', 'foo'];
-    // const data = [
-    //   {value: 5, name: "apples"},
-    //   {value: 3, name: "bananas"},
-    //   {value: 7, name: "strawberrys"}
-    // ];
-
     g.selectAll(".bar")
       .data(this.mydata)
       .enter().append("rect")
