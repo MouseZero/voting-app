@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getChart } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import { setDisplayChartAction } from '../actions/chartActions';
-import BarPoll from './BarPoll';
+import MyPoll from './MyPoll';
 
 class PollPage extends Component {
   constructor(props){
@@ -42,7 +42,7 @@ class PollPage extends Component {
         <br />
         description: {chart.description}
         <br />
-        <BarPoll dataSet={data} yAxisLabel="Votes"/>
+        <MyPoll/>
       </div>
     );
   }
