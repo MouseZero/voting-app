@@ -9,9 +9,13 @@ class MyPoll extends Component {
     this.refreshOnWindowSizeChange = this.refreshOnWindowSizeChange.bind(this);
   }
 
+  componentDidMount(){
+    this.drawChart(this.mydata);
+    this.refreshOnWindowSizeChange();
+  }
+
   drawChart(mydata){
-    console.log('call drawChart');
-    const baseElement = document.getElementById('chartContainer')
+    const baseElement = document.getElementById('chartContainer');
     baseElement.querySelector("svg").innerHTML = '';
     const chartWidth = document.getElementById('chartContainer').clientWidth;
     const chartHeight = window.innerHeight / 2;
@@ -39,7 +43,7 @@ class MyPoll extends Component {
     g.selectAll(".bar")
       .data(mydata)
       .enter().append("rect")
-      .attr("width", (d, i) => widthScaler(1)*0.75 )
+      .attr("width", widthScaler(1)*0.90 )
       .attr("height", ({value}) => heightScaler(value))
       .attr("x", (d, i) => widthScaler(i))
       .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value));
@@ -49,12 +53,6 @@ class MyPoll extends Component {
     const mydata = this.mydata;
     const drawChart = this.drawChart;
     window.addEventListener("resize", ()=>drawChart(mydata));
-    console.log('adding event listenr')
-  }
-
-  componentDidMount(){
-    this.drawChart(this.mydata);
-    this.refreshOnWindowSizeChange();
   }
 
   render(){
@@ -74,13 +72,13 @@ class MyPoll extends Component {
         <div id="chartContainer">
           <svg/>
         </div>
-        <button onClick={()=>this.drawChart(this.mydata)}>Refresh State</button>
       </div>
     );
   }
 }
 MyPoll.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  min: PropTypes.number
 };
 
 export default MyPoll;
