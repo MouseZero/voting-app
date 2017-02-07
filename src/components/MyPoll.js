@@ -36,18 +36,32 @@ class MyPoll extends Component {
     .range([0, chartHeight]);
 
     let svg = d3.select("svg")
-    .attr("width", chartWidth)
-    .attr("height", chartHeight);
+      .attr("width", chartWidth)
+      .attr("height", chartHeight)
+    ;
     let g = svg.append("g")
-    .attr("class", "bar");
+      .attr("class", "bar")
+    ;
 
-    g.selectAll(".bar")
+    const dataPoint = g.selectAll(".bar")
       .data(mydata)
-      .enter().append("rect")
+      .enter()
+    ;
+
+    dataPoint.append("rect")
+      .attr("width", widthScaler(1)*0.90 )
+      .attr("height", ({value}) => heightScaler(value))
+      .attr("x", (d, i) => widthScaler(i) + widthScaler(1)*0.05)
+      .attr("class", "shadowBar")
+      .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value))
+    ;
+
+    dataPoint.append("rect")
       .attr("width", widthScaler(1)*0.90 )
       .attr("height", ({value}) => heightScaler(value))
       .attr("x", (d, i) => widthScaler(i))
-      .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value));
+      .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value))
+    ;
   }
 
   refreshOnWindowSizeChange(){
