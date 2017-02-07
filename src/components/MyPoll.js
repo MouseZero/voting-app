@@ -21,18 +21,21 @@ class MyPoll extends Component {
     .domain([0, this.mydata.length])
     .range([0, chartWidth]);
 
-    let svg = d3.select("svg");
+    for (let x=1; x<7; x++){
+      console.log(x, widthScaler(x));
+    }
+
+    let svg = d3.select("svg")
+    .attr("width", chartWidth);
     let g = svg.append("g")
-    // .attr("transform", `translation("10", "10")`)
-    // .att("width", "100%")
     .attr("class", "bar");
 
     g.selectAll(".bar")
       .data(this.mydata)
       .enter().append("rect")
-      .attr("width", 10)
+      .attr("width", (d, i) => widthScaler(1) )
       .attr("height", (d) => d.value * 10)
-      .attr("x", (d, i) => i * 15)
+      .attr("x", (d, i) => widthScaler(i))
       .attr("y", d => 70 - d.value * 10);
     console.log()
   }
