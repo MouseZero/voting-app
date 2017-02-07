@@ -9,7 +9,7 @@ class MyPoll extends Component {
 
   componentDidMount(){
     const chartWidth = document.getElementById('chartContainer').clientWidth;
-    const chartHeight = document.getElementById('chartContainer').clientHeight;
+    const chartHeight = window.innerHeight / 2;
 
     const dataInfo = this.mydata.reduce((p, x) => {
       const max = (p.max > x.value) ? p.max : x.value;
@@ -21,23 +21,23 @@ class MyPoll extends Component {
     .domain([0, this.mydata.length])
     .range([0, chartWidth]);
 
-    for (let x=1; x<7; x++){
-      console.log(x, widthScaler(x));
-    }
+    const heightScaler = d3.scaleLinear()
+    .domain([0, dataInfo.max])
+    .range([0, chartHeight]);
 
     let svg = d3.select("svg")
-    .attr("width", chartWidth);
+    .attr("width", chartWidth)
+    .attr("height", chartHeight);
     let g = svg.append("g")
     .attr("class", "bar");
 
     g.selectAll(".bar")
       .data(this.mydata)
       .enter().append("rect")
-      .attr("width", (d, i) => widthScaler(1) )
-      .attr("height", (d) => d.value * 10)
+      .attr("width", (d, i) => widthScaler(1)*0.75 )
+      .attr("height", ({value}) => heightScaler(value))
       .attr("x", (d, i) => widthScaler(i))
-      .attr("y", d => 70 - d.value * 10);
-    console.log()
+      .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value));
   }
 
   render(){
