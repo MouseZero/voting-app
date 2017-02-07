@@ -58,21 +58,8 @@ class MyPoll extends Component {
 
   render(){
     return(
-      <div>
-        <div className="row">
-          <div className="col-sm-6">
-            Test 3
-          </div>
-          <div className="col-sm-6">
-            Test 4
-          </div>
-          <div className="col-sm-6">
-            Test 5
-          </div>
-        </div>
-        <div id="chartContainer">
-          <svg/>
-        </div>
+      <div id="chartContainer">
+        <svg/>
       </div>
     );
   }
