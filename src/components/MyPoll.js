@@ -30,8 +30,9 @@ class MyPoll extends Component {
     .domain([0, mydata.length])
     .range([0, chartWidth]);
 
+    const domainMin = (this.min != undefined) ? this.min : dataInfo.min;
     const heightScaler = d3.scaleLinear()
-    .domain([0, dataInfo.max])
+    .domain([domainMin, dataInfo.max])
     .range([0, chartHeight]);
 
     let svg = d3.select("svg")

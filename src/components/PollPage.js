@@ -49,7 +49,7 @@ class PollPage extends Component {
         <br />
         description: {chart.description}
         <br />
-        <MyPoll data={this.myData}/>
+        <MyPoll data={this.myData} min="0"/>
       </div>
     );
   }
