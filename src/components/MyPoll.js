@@ -19,6 +19,7 @@ class MyPoll extends Component {
     baseElement.querySelector("svg").innerHTML = '';
     const chartWidth = document.getElementById('chartContainer').clientWidth;
     const chartHeight = window.innerHeight / 2;
+    const barHeight = chartHeight * .85;
 
     const dataInfo = mydata.reduce((p, x) => {
       const max = (p.max > x.value) ? p.max : x.value;
@@ -33,7 +34,7 @@ class MyPoll extends Component {
     const domainMin = (this.min != undefined) ? this.min : dataInfo.min;
     const heightScaler = d3.scaleLinear()
     .domain([domainMin, dataInfo.max])
-    .range([0, chartHeight]);
+    .range([0, barHeight]);
 
     let svg = d3.select("svg")
       .attr("width", chartWidth)
