@@ -17,9 +17,10 @@ class MyPoll extends Component {
   drawChart(mydata){
     const baseElement = document.getElementById('chartContainer');
     baseElement.querySelector("svg").innerHTML = '';
-    const chartWidth = document.getElementById('chartContainer').clientWidth;
+    const fullWidth = document.getElementById('chartContainer').clientWidth;
     const chartHeight = window.innerHeight / 2;
     const barHeight = chartHeight * .85;
+    const rightOffSet = fullWidth * 0.15;
 
     const dataInfo = mydata.reduce((p, x) => {
       const max = (p.max > x.value) ? p.max : x.value;
@@ -29,7 +30,7 @@ class MyPoll extends Component {
 
     const widthScaler = d3.scaleLinear()
     .domain([0, mydata.length])
-    .range([0, chartWidth]);
+    .range([0, fullWidth - rightOffSet]);
 
     const domainMin = (this.min != undefined) ? this.min : dataInfo.min;
     const heightScaler = d3.scaleLinear()
@@ -37,7 +38,7 @@ class MyPoll extends Component {
     .range([0, barHeight]);
 
     let svg = d3.select("svg")
-      .attr("width", chartWidth)
+      .attr("width", fullWidth)
       .attr("height", chartHeight)
     ;
     let g = svg.append("g")
@@ -49,18 +50,18 @@ class MyPoll extends Component {
       .enter()
     ;
 
-    dataPoint.append("rect")
-      .attr("width", widthScaler(1)*0.90 )
-      .attr("height", ({value}) => heightScaler(value))
-      .attr("x", (d, i) => widthScaler(i) + widthScaler(1)*0.05)
-      .attr("class", "shadowBar")
-      .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value))
-    ;
+    // dataPoint.append("rect")
+    //   .attr("width", widthScaler(1)*0.90 )
+    //   .attr("height", ({value}) => heightScaler(value))
+    //   .attr("x", (d, i) => widthScaler(i) + widthScaler(1)*0.05)
+    //   .attr("class", "shadowBar")
+    //   .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value))
+    // ;
 
     dataPoint.append("rect")
       .attr("width", widthScaler(1)*0.90 )
       .attr("height", ({value}) => heightScaler(value))
-      .attr("x", (d, i) => widthScaler(i))
+      .attr("x", (d, i) => rightOffSet + widthScaler(i))
       .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value))
     ;
   }
