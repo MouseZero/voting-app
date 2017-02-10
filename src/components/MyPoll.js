@@ -29,13 +29,14 @@ class MyPoll extends Component {
     }, {max: Number.MIN_VALUE, min: Number.MAX_VALUE});
 
     const widthScaler = d3.scaleLinear()
-    .domain([0, mydata.length])
-    .range([0, fullWidth - rightOffSet]);
+      .domain([0, mydata.length])
+      .range([0, fullWidth - rightOffSet])
+    ;
 
     const domainMin = (this.min != undefined) ? this.min : dataInfo.min;
     const heightScaler = d3.scaleLinear()
-    .domain([domainMin, dataInfo.max])
-    .range([0, barHeight]);
+    .domain([0, dataInfo.max])
+    .range([barHeight, 0]);
 
     let svg = d3.select("svg")
       .attr("width", fullWidth)
@@ -50,19 +51,11 @@ class MyPoll extends Component {
       .enter()
     ;
 
-    // dataPoint.append("rect")
-    //   .attr("width", widthScaler(1)*0.90 )
-    //   .attr("height", ({value}) => heightScaler(value))
-    //   .attr("x", (d, i) => widthScaler(i) + widthScaler(1)*0.05)
-    //   .attr("class", "shadowBar")
-    //   .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value))
-    // ;
-
     dataPoint.append("rect")
-      .attr("width", widthScaler(1)*0.90 )
+      .attr("width", widthScaler(1) * 0.9 )
       .attr("height", ({value}) => heightScaler(value))
-      .attr("x", (d, i) => rightOffSet + widthScaler(i))
-      .attr("y", ({value}) => heightScaler(dataInfo.max) - heightScaler(value))
+      .attr("x", (d, i) => widthScaler(i))
+      .attr("y", ({value}) => barHeight - heightScaler(value))
     ;
   }
 
