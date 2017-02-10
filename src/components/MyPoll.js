@@ -19,7 +19,8 @@ class MyPoll extends Component {
     baseElement.querySelector("svg").innerHTML = '';
     const fullWidth = document.getElementById('chartContainer').clientWidth;
     const chartHeight = window.innerHeight / 2;
-    const barHeight = chartHeight * .85;
+    const barWidth = fullWidth * 0.9;
+    const barHeight = chartHeight * 0.8;
     const rightOffSet = fullWidth * 0.15;
 
     const dataInfo = mydata.reduce((p, x) => {
@@ -30,32 +31,41 @@ class MyPoll extends Component {
 
     const widthScaler = d3.scaleLinear()
       .domain([0, mydata.length])
-      .range([0, fullWidth - rightOffSet])
+      .range([0, barWidth])
     ;
 
     const domainMin = (this.min != undefined) ? this.min : dataInfo.min;
     const heightScaler = d3.scaleLinear()
-    .domain([0, dataInfo.max])
-    .range([barHeight, 0]);
+      .domain([0, dataInfo.max])
+      .range([barHeight, 0])
+    ;
+
+    const yAxis = d3.axisLeft(heightScaler);
 
     let svg = d3.select("svg")
       .attr("width", fullWidth)
       .attr("height", chartHeight)
     ;
     let g = svg.append("g")
+      .attr("transform", `translate(${fullWidth - barWidth}, 10)`)
+    ;
+
+    g.call(yAxis)
+
+    const barG = g.append("g")
       .attr("class", "bar")
     ;
 
-    const dataPoint = g.selectAll(".bar")
+    const dataPoint = barG.selectAll(".bar")
       .data(mydata)
       .enter()
     ;
 
     dataPoint.append("rect")
       .attr("width", widthScaler(1) * 0.9 )
-      .attr("height", ({value}) => heightScaler(value))
+      .attr("height", ({value}) => barHeight - heightScaler(value))
       .attr("x", (d, i) => widthScaler(i))
-      .attr("y", ({value}) => barHeight - heightScaler(value))
+      .attr("y", ({value}) => heightScaler(value))
     ;
   }
 
