@@ -20,7 +20,7 @@ class MyPoll extends Component {
     const fullWidth = document.getElementById('chartContainer').clientWidth;
     const chartHeight = window.innerHeight / 2;
     const barWidth = fullWidth * 0.9;
-    const barHeight = chartHeight * 0.8;
+    const barHeight = chartHeight * 0.7;
 
     const labels = mydata.map(x => x.name);
 
@@ -60,7 +60,13 @@ class MyPoll extends Component {
 
     g.append("g")
       .attr("transform", `translate(0, ${barHeight})`)
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll('text')
+      .attr("y", 0)
+      .attr("x", 9)
+      .attr("dy", ".35em")
+      .attr("transform", "rotate(90)")
+      .style("text-anchor", "start");
 
     const dataPoint = g.selectAll(".bar")
       .data(mydata)
