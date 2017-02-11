@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+//right now d3 is coming from index.ejs but I should find a better solution through npm
+const d3 = d3;
 
 class MyPoll extends Component {
   constructor(props){
@@ -39,7 +41,6 @@ class MyPoll extends Component {
       .domain([0, mydata.length])
       .range([0, barWidth]);
 
-    const domainMin = (this.min != undefined) ? this.min : dataInfo.min;
     const heightScaler = d3.scaleLinear()
       .domain([0, dataInfo.max])
       .range([barHeight, 0]);
@@ -77,14 +78,14 @@ class MyPoll extends Component {
       .attr("height", ({value}) => barHeight - heightScaler(value))
       .attr("x", (d, i) => widthScaler(i) + widthScaler(1) * 0.05 )
       .attr("y", ({value}) => heightScaler(value))
-      .attr("class", "shadowBar")
+      .attr("class", "shadowBar");
 
     dataPoint.append("rect")
       .attr("width", widthScaler(1) * 0.9 )
       .attr("height", ({value}) => barHeight - heightScaler(value))
       .attr("x", (d, i) => widthScaler(i))
       .attr("y", ({value}) => heightScaler(value))
-      .attr("class", "bar")
+      .attr("class", "bar");
   }
 
   refreshOnWindowSizeChange(){
