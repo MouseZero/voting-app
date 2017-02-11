@@ -75,9 +75,16 @@ class MyPoll extends Component {
     dataPoint.append("rect")
       .attr("width", widthScaler(1) * 0.9 )
       .attr("height", ({value}) => barHeight - heightScaler(value))
+      .attr("x", (d, i) => widthScaler(i) + widthScaler(1) * 0.05 )
+      .attr("y", ({value}) => heightScaler(value))
+      .attr("class", "shadowBar")
+
+    dataPoint.append("rect")
+      .attr("width", widthScaler(1) * 0.9 )
+      .attr("height", ({value}) => barHeight - heightScaler(value))
       .attr("x", (d, i) => widthScaler(i))
       .attr("y", ({value}) => heightScaler(value))
-      .attr("class", "bar");
+      .attr("class", "bar")
   }
 
   refreshOnWindowSizeChange(){
