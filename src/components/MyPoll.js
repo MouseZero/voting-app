@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-//right now d3 is coming from index.ejs but I should find a better solution through npm
-const d3 = d3;
 
 class MyPoll extends Component {
   constructor(props){
