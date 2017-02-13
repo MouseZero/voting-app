@@ -11,3 +11,10 @@ export function setDisplayChartAction(chart){
     chart
   };
 }
+
+export function addViewChartAction(chart){
+  return {
+    type: 'ADD_VIEW_CHART',
+    chart
+  };
+}
