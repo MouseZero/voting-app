@@ -10,13 +10,6 @@ class PollPage extends Component {
   constructor(props){
     super(props);
     this.updateOldChartData = this.updateOldChartData.bind(this);
-    this.myData = [
-      {value: 5, name: "apples"},
-      {value: 3, name: "bananas"},
-      {value: 7, name: "strawberrys"},
-      {value: 1, name: "blackberrys"},
-      {value: 6, name: "icecream"}
-    ]
   }
 
   updateOldChartData(id, chart, cb){
@@ -38,12 +31,6 @@ class PollPage extends Component {
       this.props.setDisplayChart
     );
     const chart = this.props.chart;
-    // chart.data = Object.keys(chart.data).map(itemName => {
-    //   return {
-    //     name: itemName,
-    //     value: chart.data[itemName]
-    //   };
-    // });
     return(
       <div>
         <h1>{chart.title}</h1>

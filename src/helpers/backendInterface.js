@@ -82,13 +82,10 @@ module.exports = {
           votefor
         },
         success: function(data){
-          console.log('success here')
-          console.log(data);
           data.success && resolve(data);
           reject(data.message || 'Voting did not work');
         },
         error: () => {
-          console.log('errors here')
           reject('Error trying to talk to the RESTful service');
         }
       });

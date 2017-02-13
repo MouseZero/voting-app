@@ -5,10 +5,9 @@ function VoteButtons(props){
   function voteFor(voteFor){
     vote(props.chartId, voteFor)
     .then(() => {
-      console.log('success');
     })
     .catch(() => {
-      console.log('not working');
+      //TODO error message if something goes wrong
     });
   }
 
