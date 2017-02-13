@@ -38,13 +38,10 @@ class PollPage extends Component {
       this.props.setDisplayChart
     );
     const chart = this.props.chart;
-    const data = Object.keys(chart.data).reduce((p, x) => {
-      return [...p, {value: chart.data[x], label: x}];
-    }, []);
     return(
       <div>
         <h1>{chart.title}</h1>
-        <div className='descriptoin'>{chart.description}</div>
+        <div className='description'>{chart.description}</div>
         <VoteButtons
           data={this.myData.map(x=>x.name)}
           chartId={chart.id}
