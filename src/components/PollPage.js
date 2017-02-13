@@ -4,6 +4,7 @@ import { getChart } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import { setDisplayChartAction } from '../actions/chartActions';
 import MyPoll from './MyPoll';
+import VoteButtons from './VoteButtons';
 
 class PollPage extends Component {
   constructor(props){
@@ -42,12 +43,12 @@ class PollPage extends Component {
     }, []);
     return(
       <div>
-        <h1>Poll Page</h1>
-        id : {chart.id}
-        <br />
-        title: {chart.title}
-        <br />
-        description: {chart.description}
+        <h1>{chart.title}</h1>
+        <div className='descriptoin'>{chart.description}</div>
+        <VoteButtons
+          data={this.myData.map(x=>x.name)}
+          chartId={chart.id}
+        />
         <br />
         <MyPoll data={this.myData} min="0"/>
       </div>

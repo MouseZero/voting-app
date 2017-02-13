@@ -72,6 +72,29 @@ module.exports = {
     });
   },
 
+  vote: (chartid, votefor) => {
+    return new Promise((resolve, reject) => {
+      $.ajax((baseUrl + 'vote'), {
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          chartid,
+          votefor
+        },
+        success: function(data){
+          console.log('success here')
+          console.log(data);
+          data.success && resolve(data);
+          reject(data.message || 'Voting did not work');
+        },
+        error: () => {
+          console.log('errors here')
+          reject('Error trying to talk to the RESTful service');
+        }
+      });
+    });
+  },
+
   getChart: (pollId) => {
     return new Promise((resolve, reject) => {
       $.ajax((baseUrl + 'chart'), {
