@@ -3,7 +3,13 @@ import React, { Component, PropTypes } from 'react';
 class MyPoll extends Component {
   constructor(props){
     super(props);
-    this.mydata = props.data;
+    this.data = Object.keys(props.data).map(itemName => {
+      return {
+        name: itemName,
+        value: props.data[itemName]
+      };
+    });
+    this.mydata = this.data || props.data;
     this.min = props.min;
     this.drawChart = this.drawChart.bind(this);
     this.refreshOnWindowSizeChange = this.refreshOnWindowSizeChange.bind(this);
