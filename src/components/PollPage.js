@@ -21,12 +21,14 @@ class PollPage extends Component {
     );
   }
 
+  componentWillUnmount(){
+    this.props.setDisplayChart({});
+  }
+
   updateOldChartData(id, chart, cb){
     getChart(id)
     .then(function({ info }){
-      if(chart.id !== info[0].id){
-        cb(info[0]);
-      }
+      cb(info[0]);
     })
     .catch(function(err){
       log('Error': err, LOW);
@@ -37,7 +39,7 @@ class PollPage extends Component {
     const chart = this.props.chart;
     if (isEmpty(chart)){
       return (
-        <div>loading</div>
+        <div />
       )
     } else {
       return(
