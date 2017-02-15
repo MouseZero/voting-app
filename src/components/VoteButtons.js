@@ -1,10 +1,14 @@
 import React from 'react';
 import { vote } from '../helpers/backendInterface';
+import { browserHistory } from 'react-router';
 
 function VoteButtons(props){
   function voteFor(voteFor){
-    vote(props.chartId, voteFor)
+    const browserHist = browserHistory;
+    const chartId = props.chartId;
+    vote(chartId, voteFor)
     .then(() => {
+      browserHist.push('/thanks/' + chartId);
     })
     .catch(() => {
       //TODO error message if something goes wrong
