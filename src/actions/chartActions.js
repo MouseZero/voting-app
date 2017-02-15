@@ -1,3 +1,5 @@
+import { getChart } from '../helpers/backendInterface';
+
 export function setChartAction(charts){
   return {
     type: 'SET_CHART',
@@ -17,4 +19,14 @@ export function addViewChartAction(chart){
     type: 'ADD_VIEW_CHART',
     chart
   };
+}
+
+export function setChartToId(id){
+  return (dispatch) => {
+    getChart(id)
+    .then(function({info}){
+      dispatch(setDisplayChartAction(info[0]));
+    })
+    .catch(err => console.log(err));
+  }
 }

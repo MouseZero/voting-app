@@ -107,7 +107,6 @@ class MyPoll extends Component {
   }
 
   render(){
-    console.log('from render', this.props.data)
     return(
       <div id="chartContainer">
         <svg/>

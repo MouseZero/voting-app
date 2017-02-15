@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { getChart } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
-import { setDisplayChartAction } from '../actions/chartActions';
+import { setDisplayChartAction, setChartToId } from '../actions/chartActions';
 import MyPoll from './MyPoll';
 import VoteButtons from './VoteButtons';
 import isEmpty from 'lodash.isempty';
@@ -10,29 +10,14 @@ import isEmpty from 'lodash.isempty';
 class PollPage extends Component {
   constructor(props){
     super(props);
-    this.updateOldChartData = this.updateOldChartData.bind(this);
   }
 
   componentDidMount(){
-    this.updateOldChartData(
-      this.props.params.pollid,
-      this.props.chart,
-      this.props.setDisplayChart
-    );
+    this.props.setChartToId(this.props.params.pollid);
   }
 
   componentWillUnmount(){
     this.props.setDisplayChart({});
-  }
-
-  updateOldChartData(id, chart, cb){
-    getChart(id)
-    .then(function({ info }){
-      cb(info[0]);
-    })
-    .catch(function(err){
-      log('Error': err, LOW);
-    });
   }
 
   render(){
@@ -60,7 +45,8 @@ class PollPage extends Component {
 PollPage.propTypes = {
   params: PropTypes.object,
   chart: PropTypes.object,
-  setDisplayChart: PropTypes.func
+  setDisplayChart: PropTypes.func,
+  setChartToId: PropTypes.func
 };
 const mapStateToProps = (state) => {
   return {
@@ -69,7 +55,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    setDisplayChart: (chart) => dispatch(setDisplayChartAction(chart))
+    setDisplayChart: (chart) => dispatch(setDisplayChartAction(chart)),
+    setChartToId: (id) => dispatch(setChartToId(id))
   };
 };
 
