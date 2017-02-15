@@ -12,7 +12,6 @@ class MyPoll extends Component {
   componentDidMount(){
     this.drawChart(this.props.data);
     this.refreshOnWindowSizeChange();
-    console.log('componentDidMount');
   }
 
   componentDidUpdate(){
@@ -29,7 +28,6 @@ class MyPoll extends Component {
   }
 
   drawChart(mydata){
-    console.log('updating chart with ', mydata)
     mydata = this.convertDataObjectToArray(mydata);
     const baseElement = document.getElementById('chartContainer');
     baseElement.querySelector("svg").innerHTML = '';
