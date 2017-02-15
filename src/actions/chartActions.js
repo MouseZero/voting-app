@@ -1,4 +1,5 @@
 import { getChart } from '../helpers/backendInterface';
+import { log, LOW } from '../helpers/log';
 
 export function setChartAction(charts){
   return {
@@ -21,12 +22,12 @@ export function addViewChartAction(chart){
   };
 }
 
-export function setChartToId(id){
+export function setChartToIdAction(id){
   return (dispatch) => {
     getChart(id)
     .then(function({info}){
       dispatch(setDisplayChartAction(info[0]));
     })
-    .catch(err => console.log(err));
+    .catch(err => log(err, LOW));
   }
 }

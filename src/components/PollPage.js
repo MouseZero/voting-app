@@ -1,8 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { getChart } from '../helpers/backendInterface';
-import { log, LOW } from '../helpers/log';
-import { setDisplayChartAction, setChartToId } from '../actions/chartActions';
+import { setDisplayChartAction, setChartToIdAction } from '../actions/chartActions';
 import MyPoll from './MyPoll';
 import VoteButtons from './VoteButtons';
 import isEmpty from 'lodash.isempty';
@@ -56,7 +54,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setDisplayChart: (chart) => dispatch(setDisplayChartAction(chart)),
-    setChartToId: (id) => dispatch(setChartToId(id))
+    setChartToId: (id) => dispatch(setChartToIdAction(id))
   };
 };
 
