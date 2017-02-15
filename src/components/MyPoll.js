@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 class MyPoll extends Component {
   constructor(props){
     super(props);
-    this.mydata = this.convertDataObjectToArray(props.data)
     this.min = props.min;
     this.drawChart = this.drawChart.bind(this);
     this.refreshOnWindowSizeChange = this.refreshOnWindowSizeChange.bind(this);
@@ -11,8 +10,13 @@ class MyPoll extends Component {
   }
 
   componentDidMount(){
-    this.drawChart(this.mydata);
+    this.drawChart(this.props.data);
     this.refreshOnWindowSizeChange();
+    console.log('componentDidMount');
+  }
+
+  componentDidUpdate(){
+    this.drawChart(this.props.data);
   }
 
   convertDataObjectToArray(data){
@@ -25,6 +29,8 @@ class MyPoll extends Component {
   }
 
   drawChart(mydata){
+    console.log('updating chart with ', mydata)
+    mydata = this.convertDataObjectToArray(mydata);
     const baseElement = document.getElementById('chartContainer');
     baseElement.querySelector("svg").innerHTML = '';
     const fullWidth = document.getElementById('chartContainer').clientWidth;
@@ -97,12 +103,13 @@ class MyPoll extends Component {
   }
 
   refreshOnWindowSizeChange(){
-    const mydata = this.mydata;
+    const mydata = this.props.data;
     const drawChart = this.drawChart;
     window.addEventListener("resize", ()=>drawChart(mydata));
   }
 
   render(){
+    console.log('from render', this.props.data)
     return(
       <div id="chartContainer">
         <svg/>
