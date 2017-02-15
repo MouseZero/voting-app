@@ -5,11 +5,20 @@ import { log, LOW } from '../helpers/log';
 import { setDisplayChartAction } from '../actions/chartActions';
 import MyPoll from './MyPoll';
 import VoteButtons from './VoteButtons';
+import isEmpty from 'lodash.isempty';
 
 class PollPage extends Component {
   constructor(props){
     super(props);
     this.updateOldChartData = this.updateOldChartData.bind(this);
+  }
+
+  componentDidMount(){
+    this.updateOldChartData(
+      this.props.params.pollid,
+      this.props.chart,
+      this.props.setDisplayChart
+    );
   }
 
   updateOldChartData(id, chart, cb){
@@ -25,24 +34,25 @@ class PollPage extends Component {
   }
 
   render(){
-    this.updateOldChartData(
-      this.props.params.pollid,
-      this.props.chart,
-      this.props.setDisplayChart
-    );
     const chart = this.props.chart;
-    return(
-      <div>
-        <h1>{chart.title}</h1>
-        <div className='description'>{chart.description}</div>
-        <VoteButtons
-          data={Object.keys(chart.data)}
-          chartId={chart.id}
-        />
-        <br />
-        <MyPoll data={chart.data} min="0"/>
-      </div>
-    );
+    if (isEmpty(chart)){
+      return (
+        <div>loading</div>
+      )
+    } else {
+      return(
+        <div>
+          <h1>{chart.title}</h1>
+          <div className='description'>{chart.description}</div>
+          <VoteButtons
+            data={Object.keys(chart.data)}
+            chartId={chart.id}
+          />
+          <br />
+          <MyPoll data={chart.data} min="0"/>
+        </div>
+      );
+    }
   }
 }
 PollPage.propTypes = {
