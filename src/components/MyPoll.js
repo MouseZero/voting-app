@@ -3,21 +3,25 @@ import React, { Component, PropTypes } from 'react';
 class MyPoll extends Component {
   constructor(props){
     super(props);
-    this.data = Object.keys(props.data).map(itemName => {
-      return {
-        name: itemName,
-        value: props.data[itemName]
-      };
-    });
-    this.mydata = this.data || props.data;
+    this.mydata = this.convertDataObjectToArray(props.data)
     this.min = props.min;
     this.drawChart = this.drawChart.bind(this);
     this.refreshOnWindowSizeChange = this.refreshOnWindowSizeChange.bind(this);
+    this.convertDataObjectToArray = this.convertDataObjectToArray.bind(this);
   }
 
   componentDidMount(){
     this.drawChart(this.mydata);
     this.refreshOnWindowSizeChange();
+  }
+
+  convertDataObjectToArray(data){
+    return Object.keys(data).map(itemName => {
+      return {
+        name: itemName,
+        value: data[itemName]
+      };
+    });
   }
 
   drawChart(mydata){
