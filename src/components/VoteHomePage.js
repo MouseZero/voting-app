@@ -3,11 +3,6 @@ import React, { Component } from 'react';
 class VoteHomePage extends Component {
   constructor(props){
     super(props);
-    this.state = {d3: ''};
-  }
-
-  componentDidMount(){
-    this.setState({d3: data});
   }
 
   render(){
