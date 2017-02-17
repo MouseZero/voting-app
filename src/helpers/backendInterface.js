@@ -72,6 +72,22 @@ module.exports = {
     });
   },
 
+  getLatestCharts: () => {
+    return new Promise((resolve, reject) => {
+      $.ajax((baseUrl + 'latestcharts'), {
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+          data.success && resolve(data);
+          reject(data.message || 'Did no get chart data from request to service');
+        },
+        error: () => {
+          reject('Error trying to get latest polls from RESTful service');
+        }
+      });
+    });
+  },
+
   vote: (chartid, votefor) => {
     return new Promise((resolve, reject) => {
       $.ajax((baseUrl + 'vote'), {
