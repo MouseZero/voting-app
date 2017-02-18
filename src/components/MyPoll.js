@@ -40,7 +40,7 @@ class MyPoll extends Component {
 
     const labelScaler = d3.scaleBand()
       .domain(labels)
-      .range([0, barWidth]);
+      .range([0, barWidth])
     const xAxis = d3.axisBottom(labelScaler);
 
     const dataInfo = mydata.reduce((p, x) => {
@@ -57,8 +57,9 @@ class MyPoll extends Component {
       .domain([0, dataInfo.max])
       .range([barHeight, 0]);
 
-    const yAxis = d3.axisLeft(heightScaler);
-
+    const yAxis = d3.axisLeft(heightScaler)
+      .tickFormat(e => (Math.floor(e) != e)? "" : e);
+      
     let svg = d3.select(baseElement).select("svg")
       .attr("width", fullWidth)
       .attr("height", chartHeight);
