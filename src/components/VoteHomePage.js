@@ -26,11 +26,11 @@ class VoteHomePage extends Component {
 }
 VoteHomePage.propTypes = {
   setLatestCharts: PropTypes.func,
-  charts: PropTypes.object
+  charts: PropTypes.array
 };
 const mapStateToProps = state => {
   return {
-    charts: state.latestCharts
+    charts: (state.latestCharts instanceof Array)? state.latestCharts : []
   };
 };
 const mapDispatchToProps = dispatch => {

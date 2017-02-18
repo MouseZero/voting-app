@@ -116,7 +116,8 @@ class MyPoll extends Component {
 }
 MyPoll.propTypes = {
   data: PropTypes.object,
-  min: PropTypes.number
+  min: PropTypes.number,
+  chartId: PropTypes.number
 };
 
 export default MyPoll;
