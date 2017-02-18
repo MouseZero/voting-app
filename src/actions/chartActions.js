@@ -1,4 +1,4 @@
-import { getChart } from '../helpers/backendInterface';
+import { getChart, getLatestCharts } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 
 export function setChartAction(charts){
@@ -29,13 +29,18 @@ export function setChartToIdAction(id){
       dispatch(setDisplayChartAction(info[0]));
     })
     .catch(err => log(err, LOW));
-  }
+  };
 }
 
 export function setLatestChartsAction(){
-  // SET_LATEST_CHARTS
-  return {
-    type: 'SET_LATEST_CHARTS',
-    charts: [ {name: "hi"}, {name: "hi2"}]
-  }
+  return (dispatch) => {
+    getLatestCharts()
+    .then(function({info}){
+      dispatch({
+        type: 'SET_LATEST_CHARTS',
+        charts: info
+      });
+    })
+    .catch(err => log(err, LOW));
+  };
 }
