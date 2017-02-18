@@ -1,6 +1,7 @@
 import React from 'react';
 import isEmpty from 'lodash.isempty';
 import MyPoll from './MyPoll';
+import { Link } from 'react-router';
 
 export default function DisplayCharts({charts}){
   if(charts && !isEmpty(charts)){
@@ -9,9 +10,16 @@ export default function DisplayCharts({charts}){
         {charts.map(chartData => {
           return (
             <div key={chartData.id}>
-              <h2>{chartData.title}</h2>
+              <h2>
+                <Link to={"poll/" + chartData.id}>
+                {chartData.title}
+                </Link>
+              </h2>
               {chartData.description}
+              <br />
+              <Link to={"poll/" + chartData.id}>
               <MyPoll data={chartData.data} chartId={chartData.id}/>
+              </Link>
             </div>
           );
         })}
