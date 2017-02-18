@@ -1,11 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { setLatestChartsAction } from '../actions/chartActions';
 
 class VoteHomePage extends Component {
   constructor(props){
     super(props);
   }
 
+  componentWillMount(){
+    this.props.setLatestCharts();
+  }
+
   render(){
+    console.log(this.props.charts)
     return (
       <div>
         <h1>Voting App</h1>
@@ -16,5 +23,19 @@ class VoteHomePage extends Component {
     );
   }
 }
+VoteHomePage.propTypes = {
+  setLatestCharts: PropTypes.func,
+  charts: PropTypes.object
+};
+const mapStateToProps = state => {
+  return {
+    charts: state.latestCharts
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    setLatestCharts: () => dispatch(setLatestChartsAction())
+  };
+};
 
-export default VoteHomePage;
+export default connect(mapStateToProps, mapDispatchToProps)(VoteHomePage);

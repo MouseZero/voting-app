@@ -31,3 +31,11 @@ export function setChartToIdAction(id){
     .catch(err => log(err, LOW));
   }
 }
+
+export function setLatestChartsAction(){
+  // SET_LATEST_CHARTS
+  return {
+    type: 'SET_LATEST_CHARTS',
+    charts: [ {name: "hi"}, {name: "hi2"}]
+  }
+}
