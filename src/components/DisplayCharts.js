@@ -3,7 +3,6 @@ import isEmpty from 'lodash.isempty';
 import MyPoll from './MyPoll';
 
 export default function DisplayCharts({charts}){
-  console.log('charts are: ', charts);
   if(charts && !isEmpty(charts)){
     return (
       <div>

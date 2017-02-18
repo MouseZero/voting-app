@@ -61,8 +61,7 @@ class MyPoll extends Component {
 
     let svg = d3.select(baseElement).select("svg")
       .attr("width", fullWidth)
-      .attr("height", chartHeight)
-      .attr("id", this.props.chartId);
+      .attr("height", chartHeight);
 
     let g = svg.append("g")
       .attr("transform", `translate(${fullWidth - barWidth}, 10)`)
