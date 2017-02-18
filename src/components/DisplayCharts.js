@@ -12,6 +12,7 @@ export default function DisplayCharts({charts}){
             <div>
               <h2>{chartData.title}</h2>
               {chartData.description}
+              <MyPoll data={chartData.data} chartId={chartData.id}/>
             </div>
           );
         })}

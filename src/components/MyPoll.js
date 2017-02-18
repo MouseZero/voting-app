@@ -29,9 +29,9 @@ class MyPoll extends Component {
 
   drawChart(mydata){
     mydata = this.convertDataObjectToArray(mydata);
-    const baseElement = document.getElementById('chartContainer');
+    const baseElement = document.getElementById('chartContainer'+this.props.chartId);
     baseElement.querySelector("svg").innerHTML = '';
-    const fullWidth = document.getElementById('chartContainer').clientWidth;
+    const fullWidth = document.getElementById('chartContainer'+this.props.chartId).clientWidth;
     const chartHeight = window.innerHeight / 2;
     const barWidth = fullWidth * 0.9;
     const barHeight = chartHeight * 0.7;
@@ -59,9 +59,10 @@ class MyPoll extends Component {
 
     const yAxis = d3.axisLeft(heightScaler);
 
-    let svg = d3.select("svg")
+    let svg = d3.select(baseElement).select("svg")
       .attr("width", fullWidth)
-      .attr("height", chartHeight);
+      .attr("height", chartHeight)
+      .attr("id", this.props.chartId);
 
     let g = svg.append("g")
       .attr("transform", `translate(${fullWidth - barWidth}, 10)`)
@@ -108,7 +109,7 @@ class MyPoll extends Component {
 
   render(){
     return(
-      <div id="chartContainer">
+      <div id={"chartContainer"+this.props.chartId}>
         <svg/>
       </div>
     );
