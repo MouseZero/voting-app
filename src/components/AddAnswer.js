@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import InputBox from './InputBox';
 import charts from '../helpers/backendInterface';
+import { log, LOW } from '../helpers/log';
+import { connect } from 'react-redux';
 
 class AddAnswer extends Component{
   constructor(props){
@@ -9,7 +11,14 @@ class AddAnswer extends Component{
   }
 
   addAnswer(){
-    charts.addAnswer(this.props.params.pollid, this.newAnswerText);
+    charts.addAnswer(
+      this.props.token,
+      this.props.params.pollid,
+      this.newAnswerText.value
+    )
+    .catch(function (err){
+      log(err, LOW);
+    });
   }
 
   render(){
@@ -26,5 +35,14 @@ class AddAnswer extends Component{
     );
   }
 }
+AddAnswer.propTypes = {
+  token: PropTypes.string,
+  params: PropTypes.object
+};
+const mapStateToProps = () => {
+  return {
+    token: localStorage.token
+  };
+};
 
-export default AddAnswer;
+export default connect(mapStateToProps)(AddAnswer);

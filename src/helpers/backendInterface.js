@@ -108,8 +108,10 @@ module.exports = {
     });
   },
 
-  addAnswer: (chartid, newanswer) => {
-    console.log('called andAnswer');
+  addAnswer: (token, chartid, newanswer) => {
+    console.log('token from backendInterface', token);
+    console.log(chartid)
+    console.log(newanswer)
     return new Promise((resolve, reject) => {
       $.ajax(
         (baseUrl + 'add/answer'),
@@ -120,12 +122,18 @@ module.exports = {
             chartid,
             newanswer
           },
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           success: function(data){
             data.success && resolve(data);
             reject(data.message || 'Answer addition did not work');
           },
           error: () => {
             reject('Error trying to talk to the RESTful service');
+          },
+          beforeSend: function (jqXHR){
+            console.log(token);
+            jqXHR.setRequestHeader('x-access-token', token);
+            jqXHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           }
         }
       );
