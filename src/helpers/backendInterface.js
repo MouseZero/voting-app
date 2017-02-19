@@ -108,6 +108,30 @@ module.exports = {
     });
   },
 
+  addAnswer: (chartid, newanswer) => {
+    console.log('called andAnswer');
+    return new Promise((resolve, reject) => {
+      $.ajax(
+        (baseUrl + 'add/answer'),
+        {
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            chartid,
+            newanswer
+          },
+          success: function(data){
+            data.success && resolve(data);
+            reject(data.message || 'Answer addition did not work');
+          },
+          error: () => {
+            reject('Error trying to talk to the RESTful service');
+          }
+        }
+      );
+    });
+  },
+
   getChart: (pollId) => {
     return new Promise((resolve, reject) => {
       $.ajax((baseUrl + 'chart'), {

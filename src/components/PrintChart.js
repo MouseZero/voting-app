@@ -5,6 +5,8 @@ export default function PrintChart(props) {
   return (
     <div>
       <Link to={"poll/" + props.pollId}>Show</Link>
+      &nbsp;&nbsp;&nbsp;
+      <Link to={'add/answer/' + props.pollId}>Add Another Answer</Link>
       <br />
       Title: {props.title}
       <br />

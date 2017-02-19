@@ -12,6 +12,7 @@ import ProfilePage from './components/ProfilePage';
 import PollPage from './components/PollPage';
 import CreateUser from './components/CreateUser';
 import Thanks from './components/Thanks';
+import AddAnswer from './components/AddAnswer';
 
 export default (
   <Route path="/" component={App}>
@@ -22,6 +23,7 @@ export default (
     <Route path="profile" components={ProfilePage}/>
     <Route path="poll/:pollid" components={PollPage}/>
     <Route path="thanks/:pollid" components={Thanks}/>
+    <Route path="add/answer/:pollid" components={AddAnswer}/>
     <Route path="create-user" components={CreateUser}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
