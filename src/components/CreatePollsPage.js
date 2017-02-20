@@ -5,6 +5,7 @@ import { updateCharts } from '../helpers/commonDispatchers';
 import { log, LOW } from '../helpers/log';
 import InputBox from './InputBox';
 import Button from './Button';
+import SmallerContainer from './SmallerContainer';
 
 class createPollsPage extends React.Component{
   constructor(props){
@@ -51,7 +52,7 @@ class createPollsPage extends React.Component{
           reference={node => points[i] = node}
           msg={"Answer "+(i+1)}
           key={i}/>
-      )
+      );
     }
     return displayPoints;
   }
@@ -59,25 +60,19 @@ class createPollsPage extends React.Component{
   render() {
     this.point = [];
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
-          <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
-            <h1>Create A Poll</h1>
-            <InputBox
-              reference={node => this.title = node}
-              msg="Title"/>
-            <InputBox
-              reference={node => this.desc = node}
-              msg="Description"/>
-            <Button cb={this.incrementPoints} msg="+"/>
-            <Button cb={this.decrementPoints} msg="-"/>
-            {this.pointInputs(this.state.numberOfPoints, this.point)}
-            <Button cb={this.sendForChartCreation} msg="Create Poll"/>
-          </div>
-          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
-        </div>
-      </div>
+      <SmallerContainer>
+        <h1>Create A Poll</h1>
+        <InputBox
+          reference={node => this.title = node}
+          msg="Title"/>
+        <InputBox
+          reference={node => this.desc = node}
+          msg="Description"/>
+        <Button cb={this.incrementPoints} msg="+"/>
+        <Button cb={this.decrementPoints} msg="-"/>
+        {this.pointInputs(this.state.numberOfPoints, this.point)}
+        <Button cb={this.sendForChartCreation} msg="Create Poll"/>
+      </SmallerContainer>
     );
   }
 }
