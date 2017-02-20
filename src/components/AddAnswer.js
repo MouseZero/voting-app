@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import InputBox from './InputBox';
 import charts from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
@@ -13,11 +14,15 @@ class AddAnswer extends Component{
   }
 
   addAnswer(){
+    const { token, params: {pollid} } = this.props;
     charts.addAnswer(
-      this.props.token,
-      this.props.params.pollid,
+      token,
+      pollid,
       this.newAnswerText.value
     )
+    .then(function(){
+      browserHistory.push('poll/' + pollid);
+    })
     .catch(function (err){
       log(err, LOW);
     });
