@@ -27,16 +27,21 @@ class CreateUser extends Component {
     this.userName = '';
     this.password = '';
     return (
-      <div>
-        <h1>Create New User</h1>
-        <div>
-          User Name: <input ref={node => this.userName = node} type="text"/>
-        </div>
-        <div>
-          Password: <input ref={node => this.password = node} type="text"/>
-        </div>
-        <div>
-          <button onClick={this.createUserRequest}>Create User</button>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
+          <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+            <h1>Create New User</h1>
+            <div>
+              User Name: <input ref={node => this.userName = node} type="text"/>
+            </div>
+            <div>
+              Password: <input ref={node => this.password = node} type="text"/>
+            </div>
+            <div>
+              <button onClick={this.createUserRequest}>Create User</button>
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -57,21 +57,30 @@ class createPollsPage extends React.Component{
   render() {
     this.point = [];
     return (
-      <div>
-        <h1>Create A Poll</h1>
-        {this.state.numberOfPoints}
-        <br />
-        <button onClick={this.incrementPoints}>inc</button><button onClick={this.decrementPoints}>dec</button>
-        {InputBox({
-          ref: node => this.title = node,
-          msg: 'Title'
-        })}
-        {InputBox({
-          ref: node => this.desc = node,
-          msg: 'Description'
-        })}
-        {this.pointInputs(this.state.numberOfPoints, this.point)}
-        <button onClick={this.sendForChartCreation}>Create Poll</button>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
+          <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+            <h1>Create A Poll</h1>
+            {this.state.numberOfPoints}
+            <br />
+            <button onClick={this.incrementPoints}>
+              inc
+            </button>
+            <button onClick={this.decrementPoints}>dec</button>
+            {InputBox({
+              ref: node => this.title = node,
+              msg: 'Title'
+            })}
+            {InputBox({
+              ref: node => this.desc = node,
+              msg: 'Description'
+            })}
+            {this.pointInputs(this.state.numberOfPoints, this.point)}
+            <button onClick={this.sendForChartCreation}>Create Poll</button>
+          </div>
+          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
+        </div>
       </div>
     );
   }
