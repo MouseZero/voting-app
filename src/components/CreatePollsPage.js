@@ -4,6 +4,7 @@ import { createChart } from '../helpers/backendInterface';
 import { updateCharts } from '../helpers/commonDispatchers';
 import { log, LOW } from '../helpers/log';
 import InputBox from './InputBox';
+import Button from './Button';
 
 class createPollsPage extends React.Component{
   constructor(props){
@@ -62,12 +63,6 @@ class createPollsPage extends React.Component{
           <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
           <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
             <h1>Create A Poll</h1>
-            {this.state.numberOfPoints}
-            <br />
-            <button onClick={this.incrementPoints}>
-              inc
-            </button>
-            <button onClick={this.decrementPoints}>dec</button>
             {InputBox({
               ref: node => this.title = node,
               msg: 'Title'
@@ -76,8 +71,19 @@ class createPollsPage extends React.Component{
               ref: node => this.desc = node,
               msg: 'Description'
             })}
+            {Button({
+              cb: this.incrementPoints,
+              msg: "+"
+            })}
+            {Button({
+              cb: this.decrementPoints,
+              msg: "-"
+            })}
             {this.pointInputs(this.state.numberOfPoints, this.point)}
-            <button onClick={this.sendForChartCreation}>Create Poll</button>
+            {Button({
+              cb: this.sendForChartCreation,
+              msg: "Create Poll"
+            })}
           </div>
           <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
         </div>

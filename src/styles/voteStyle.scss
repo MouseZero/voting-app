@@ -21,16 +21,19 @@ $red-light: #cb7366;
 }
 
 /* ---- Buttons ---- */
-.btn-theme {
+.btn-theme,
+.btn-theme:focus {
   background-color: $red-light;
   color: $red-dark;
   border-color: $red-dark;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   margin-right: 1vw;
 }
 .btn-theme:hover,
 .btn-theme:active,
 .btn-theme:visited,
-.btn-theme:focus {
+ {
   /*TODO find a better way then using !important*/
   background-color: $red-dark !important;
   color: $red-light;
