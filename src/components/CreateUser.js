@@ -3,6 +3,7 @@ import { createUser } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import InputBox from './InputBox';
 import Button from './Button';
+import SmallerContainer from './SmallerContainer';
 
 
 class CreateUser extends Component {
@@ -12,8 +13,8 @@ class CreateUser extends Component {
   }
 
   createUserRequest(){
-    const name = this.userName.value;
-    const password = this.password.value;
+    const name = this.userNameInput.value;
+    const password = this.passwordInput.value;
     const history = this.props.history;
     createUser(name, password)
     .then(function (data){
@@ -26,25 +27,18 @@ class CreateUser extends Component {
   }
 
   render(){
-    this.userName = '';
-    this.password = '';
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
-          <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
-            <h1>Create New User</h1>
-              <InputBox
-                reference={node => this.userName = node}
-                msg="User Name"/>
-              <InputBox
-                reference={node => this.password = node}
-                msg="Password"
-                isPassword="true"/>
-              <Button cb={this.createUserRequest} msg="CreateUser"/>
-          </div>
-        </div>
-      </div>
+      <SmallerContainer>
+        <h1>Create New User</h1>
+        <InputBox
+          reference={node => this.userNameInput = node}
+          msg="User Name"/>
+        <InputBox
+          reference={node => this.passwordInput = node}
+          msg="Password"
+          isPassword="true"/>
+        <Button cb={this.createUserRequest} msg="CreateUser"/>
+      </SmallerContainer>
     );
   }
 }
