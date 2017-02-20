@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import { getNewToken } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
+import InputBox from './InputBox';
 
 class LoginPage extends React.Component{
   constructor(props){
@@ -34,30 +35,18 @@ class LoginPage extends React.Component{
           <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
           <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
             <h1>Login</h1>
-            <div class="form-group row">
-              <label
-                for="name-input-field"
-                className="col-form-label">
-                User
-              </label>
-                <input
-                  className="form-control theme-form"
-                  id="name-input-field"
-                  type="text" ref={node => this.nameInput = node}
-                />
+            <div className="form-group row">
+              {InputBox({
+                ref: node => this.nameInput = node,
+                msg: 'User'
+              })}
             </div>
 
-            <div class="form-group row">
-              <label
-                for="password-input-field"
-                className="col-form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control theme-form"
-                id="password-input-field"
-                ref={node => this.passwordInput = node}/>
+            <div className="form-group row">
+              {InputBox({
+                ref: node => this.passwordInput = node,
+                msg: 'Password'
+              })}
             </div>
             <br />
             <button className="btn btn-primary btn-theme" onClick={this.login} >
