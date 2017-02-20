@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { setChartAction } from '../actions/chartActions';
+import Button from './Button';
 
 class ProfilePage extends React.Component {
   constructor(props){
@@ -16,9 +17,9 @@ class ProfilePage extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="center">
         <h1>Profile Page</h1>
-        <button onClick={this.logoff}>Log Off</button>
+        <Button cb={this.logoff} msg="Log Off"/>
       </div>
     );
   }

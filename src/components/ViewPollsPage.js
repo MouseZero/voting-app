@@ -4,6 +4,7 @@ import { updateCharts } from '../helpers/commonDispatchers';
 import { deleteChart } from '../helpers/backendInterface';
 import PrintChart from './PrintChart';
 import { log, LOW } from '../helpers/log';
+import SmallerContainer from './SmallerContainer';
 
 const deletePoll = (token, updateCharts) => id => () => {
   deleteChart(token, id)
@@ -19,7 +20,7 @@ const deletePoll = (token, updateCharts) => id => () => {
 function ViewPollsPage({ charts, token, updateAllCharts }) {
   charts.length || updateAllCharts(token);
   return (
-    <div>
+    <SmallerContainer>
       <h1>Your Polls</h1>
       {charts.map( (x, i)=> {
         return (
@@ -32,7 +33,7 @@ function ViewPollsPage({ charts, token, updateAllCharts }) {
           />
         );
       })}
-    </div>
+    </SmallerContainer>
   );
 }
 ViewPollsPage.propTypes = {
