@@ -29,46 +29,48 @@ class LoginPage extends React.Component{
 
   render(){
     return (
-      <div>
-        <h1>Login</h1>
-        <div class="form-group row">
-          <label
-            for="name-input-field"
-            className="col-2 col-form-label">
-            User
-          </label>
-          <div className="col-10">
-            <input
-              className="form-control theme-form"
-              id="name-input-field"
-              type="text" ref={node => this.nameInput = node}
-            />
-          </div>
-        </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
+          <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+            <h1>Login</h1>
+            <div class="form-group row">
+              <label
+                for="name-input-field"
+                className="col-form-label">
+                User
+              </label>
+                <input
+                  className="form-control theme-form"
+                  id="name-input-field"
+                  type="text" ref={node => this.nameInput = node}
+                />
+            </div>
 
-        <div class="form-group row">
-          <label
-            for="password-input-field"
-            className="col-2 col-form-label">
-            Password
-          </label>
-          <div className="col-10">
-            <input
-              type="password"
-              className="form-control theme-form"
-              id="password-input-field"
-              ref={node => this.passwordInput = node}/>
+            <div class="form-group row">
+              <label
+                for="password-input-field"
+                className="col-form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control theme-form"
+                id="password-input-field"
+                ref={node => this.passwordInput = node}/>
+            </div>
+            <br />
+            <button className="btn btn-primary btn-theme" onClick={this.login} >
+              LogIn
+            </button>
+            <button
+              className="btn btn-primary btn-theme"
+              onClick={this.createAccount}>
+              Create Account
+            </button>
           </div>
+          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
         </div>
-        <br />
-        <button className="btn btn-primary btn-theme" onClick={this.login} >
-          LogIn
-        </button>
-        <button
-          className="btn btn-primary btn-theme"
-          onClick={this.createAccount}>
-          Create Account
-        </button>
       </div>
     );
   }
