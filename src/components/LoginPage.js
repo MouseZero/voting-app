@@ -4,6 +4,7 @@ import { getNewToken } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import InputBox from './InputBox';
 import Button from './Button';
+import SmallerContainer from './SmallerContainer';
 
 class LoginPage extends React.Component{
   constructor(props){
@@ -42,6 +43,7 @@ class LoginPage extends React.Component{
             })}
             {InputBox({
               ref: node => this.passwordInput = node,
+              isPassword: true,
               msg: 'Password'
             })}
             <div>
