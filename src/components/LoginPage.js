@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { getNewToken } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import InputBox from './InputBox';
