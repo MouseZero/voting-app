@@ -26,9 +26,7 @@ $red-light: #cb7366;
   background-color: $red-light;
   color: $red-dark;
   border-color: $red-dark;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  margin-right: 1vw;
+  margin: 5px 5px 5px 0px;
 }
 .btn-theme:hover,
 .btn-theme:active,
@@ -44,6 +42,9 @@ $red-light: #cb7366;
 }
 
 /* --- Form --- */
+.input-box{
+  margin-bottom: 5px;
+}
 .theme-form:active,
 .theme-form:focus {
   border-color: $red-dark;

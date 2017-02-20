@@ -36,19 +36,14 @@ class LoginPage extends React.Component{
           <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
           <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
             <h1>Login</h1>
-            <div className="form-group row">
-              {InputBox({
-                ref: node => this.nameInput = node,
-                msg: 'User'
-              })}
-            </div>
-
-            <div className="form-group row">
-              {InputBox({
-                ref: node => this.passwordInput = node,
-                msg: 'Password'
-              })}
-            </div>
+            {InputBox({
+              ref: node => this.nameInput = node,
+              msg: 'User'
+            })}
+            {InputBox({
+              ref: node => this.passwordInput = node,
+              msg: 'Password'
+            })}
             <div>
               {Button({
                 cb: this.login,
