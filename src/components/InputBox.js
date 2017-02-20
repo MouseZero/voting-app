@@ -3,8 +3,8 @@ import React, { PropTypes } from 'react';
 export default function InputBox(props) {
   return (
     <div key={props.key}>
-      {props.msg}:&nbsp;
-      <input ref={props.ref} type="text"/>
+      <label>{props.msg}</label>
+      <input className="form-control theme-form" ref={props.ref} type="text"/>
     </div>
   );
 }
