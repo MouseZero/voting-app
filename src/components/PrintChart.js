@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import Button from './Button';
 
 export default class PrintChart extends Component {
