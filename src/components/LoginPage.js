@@ -32,25 +32,17 @@ class LoginPage extends React.Component{
 
   render(){
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
-          <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
-            <h1>Login</h1>
-            <InputBox
-              reference={node => this.nameInput = node}
-              msg="User"/>
-            <InputBox
-              reference={node => this.passwordInput = node}
-              msg="Password"/>
-            <div>
-              <Button cb={this.login} msg="LogIn"/>
-              <Button cb={this.createAccount} msg="Create Account"/>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
-        </div>
-      </div>
+      <SmallerContainer>
+        <h1>Login</h1>
+        <InputBox
+          reference={node => this.nameInput = node}
+          msg="User"/>
+        <InputBox
+          reference={node => this.passwordInput = node}
+          msg="Password"/>
+        <Button cb={this.login} msg="LogIn"/>
+        <Button cb={this.createAccount} msg="Create Account"/>
+      </SmallerContainer>
     );
   }
 }
