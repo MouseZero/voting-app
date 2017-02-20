@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 
 export default function Button(props){
+  const { cb, msg } = props;
   return(
     <button
       className="btn btn-primary btn-theme"
-      onClick={props.cb}>
-      {props.msg}
+      onClick={cb}>
+      {msg}
     </button>
   );
 }

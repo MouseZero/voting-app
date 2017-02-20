@@ -3,6 +3,8 @@ import InputBox from './InputBox';
 import charts from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import { connect } from 'react-redux';
+import Button from './Button';
+import SmallerContainer from './SmallerContainer';
 
 class AddAnswer extends Component{
   constructor(props){
@@ -23,15 +25,14 @@ class AddAnswer extends Component{
 
   render(){
     return(
-      <div>
+      <SmallerContainer>
         <h1>Add Answer</h1>
-        {InputBox({
-          ref: node => this.newAnswerText = node,
-          msg: 'Name of the new answer'
-        })}
+        <InputBox
+          reference={node => this.newAnswerText = node}
+          msg="Name of the new answer"/>
         <br />
-        <button onClick={this.addAnswer}>submit</button>
-      </div>
+        <Button cb={this.addAnswer} msg="Submit"/>
+      </SmallerContainer>
     );
   }
 }
