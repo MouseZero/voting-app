@@ -34,24 +34,14 @@ class CreateUser extends Component {
           <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
           <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
             <h1>Create New User</h1>
-            <div>
-              {InputBox({
-                ref: node => this.userName = node,
-                msg: "User Name"
-              })}
-            </div>
-            <div>
-              {InputBox({
-                ref: node => this.password = node,
-                msg: "Password"
-              })}
-            </div>
-            <div>
-              {Button({
-                cb: this.createUserRequest,
-                msg: "Create User"
-              })}
-            </div>
+              <InputBox
+                reference={node => this.userName = node}
+                msg="User Name"/>
+              <InputBox
+                reference={node => this.password = node}
+                msg="Password"
+                isPassword="true"/>
+              <Button cb={this.createUserRequest} msg="CreateUser"/>
           </div>
         </div>
       </div>
