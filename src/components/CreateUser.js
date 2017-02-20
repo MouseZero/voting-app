@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { createUser } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
+import InputBox from './InputBox';
+import Button from './Button';
 
 
 class CreateUser extends Component {
@@ -33,13 +35,22 @@ class CreateUser extends Component {
           <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
             <h1>Create New User</h1>
             <div>
-              User Name: <input ref={node => this.userName = node} type="text"/>
+              {InputBox({
+                ref: node => this.userName = node,
+                msg: "User Name"
+              })}
             </div>
             <div>
-              Password: <input ref={node => this.password = node} type="text"/>
+              {InputBox({
+                ref: node => this.password = node,
+                msg: "Password"
+              })}
             </div>
             <div>
-              <button onClick={this.createUserRequest}>Create User</button>
+              {Button({
+                cb: this.createUserRequest,
+                msg: "Create User"
+              })}
             </div>
           </div>
         </div>
