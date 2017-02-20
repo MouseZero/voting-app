@@ -47,7 +47,10 @@ module.exports = {
 
         beforeSend: function (jqXHR){
           jqXHR.setRequestHeader('x-access-token', token);
-          jqXHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          jqXHR.setRequestHeader(
+            'Content-Type',
+            'application/x-www-form-urlencoded'
+          );
         }
       });
     });
@@ -63,7 +66,10 @@ module.exports = {
         },
         success: function(data){
           data.success && resolve(data);
-          reject(data.message || 'Did not get chart data from request to service');
+          reject(
+            data.message ||
+            'Did not get chart data from request to service'
+          );
         },
         error: () => {
           reject('Error trying to get polls from RESTful service');
@@ -79,7 +85,10 @@ module.exports = {
         dataType: 'json',
         success: function(data){
           data.success && resolve(data);
-          reject(data.message || 'Did no get chart data from request to service');
+          reject(
+            data.message ||
+            'Did no get chart data from request to service'
+          );
         },
         error: () => {
           reject('Error trying to get latest polls from RESTful service');
@@ -89,22 +98,30 @@ module.exports = {
   },
 
   vote: (chartid, votefor) => {
-    return new Promise((resolve, reject) => {
-      $.ajax((baseUrl + 'vote'), {
-        type: 'GET',
-        dataType: 'json',
-        data: {
-          chartid,
-          votefor
-        },
-        success: function(data){
-          data.success && resolve(data);
-          reject(data.message || 'Voting did not work');
-        },
-        error: () => {
-          reject('Error trying to talk to the RESTful service');
-        }
+    //need to move vote limits on the server side this is easy to cheat with
+    const { getItem, setItem } = window.localStorage;
+    if(getItem("voted"+chartid) != "voted"){
+      setItem("voted"+chartid, "voted");
+      return new Promise((resolve, reject) => {
+        $.ajax((baseUrl + 'vote'), {
+          type: 'GET',
+          dataType: 'json',
+          data: {
+            chartid,
+            votefor
+          },
+          success: function(data){
+            data.success && resolve(data);
+            reject(data.message || 'Voting did not work');
+          },
+          error: () => {
+            reject('Error trying to talk to the RESTful service');
+          }
+        });
       });
+    }
+    return new Promise((resolve, reject) => {
+      reject("You have already voted on this poll");
     });
   },
 
@@ -129,7 +146,10 @@ module.exports = {
           },
           beforeSend: function (jqXHR){
             jqXHR.setRequestHeader('x-access-token', token);
-            jqXHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            jqXHR.setRequestHeader(
+              'Content-Type',
+              'application/x-www-form-urlencoded'
+            );
           }
         }
       );
@@ -146,7 +166,10 @@ module.exports = {
         },
         success: function(data){
           data.success && resolve(data);
-          reject(data.message || 'Did not get chart data from request to service');
+          reject(
+            data.message ||
+            'Did not get chart data from request to service'
+          );
         },
         error: () => {
           reject('Error trying to get polls from RESTful service');
@@ -190,7 +213,10 @@ module.exports = {
           reject('Connected to server but could not create the user ' + name);
         },
         error: () => {
-          reject('Error trying to create the user from the RESTful serivce (is the server up?)');
+          reject(
+            'Error trying to create the user from the RESTful serivce ' +
+            '(is the server up?)'
+          );
         }
       });
     });
