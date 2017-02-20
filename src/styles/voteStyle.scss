@@ -35,7 +35,9 @@ $red-light: #cb7366;
   background-color: $red-dark !important;
   color: $red-light;
   border-color: $red-light;
-  box-shadow: 0 4px 8px 0 rgba(203, 115, 102, 0.2), 0 6px 20px 0 rgba(203, 115, 102, 0.19);
+  box-shadow:
+    0 4px 8px 0 rgba(203, 115, 102, 0.2),
+    0 6px 20px 0 rgba(203, 115, 102, 0.19);
 }
 
 /* --- Form --- */
@@ -45,7 +47,6 @@ $red-light: #cb7366;
   box-shadow:
     0 4px 8px 0 rgba(203, 115, 102, 0.2),
     0 6px 20px 0 rgba(203, 115, 102, 0.19);
-  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 
 /* ---- All Pages ---- */

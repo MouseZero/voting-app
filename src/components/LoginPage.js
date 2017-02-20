@@ -49,15 +49,16 @@ class LoginPage extends React.Component{
                 msg: 'Password'
               })}
             </div>
-            <br />
-            {Button({
-              cb: this.login,
-              msg: 'LogIn'
-            })}
-            {Button({
-              cb: this.createAccount,
-              msg: "Create Account"
-            })}
+            <div>
+              {Button({
+                cb: this.login,
+                msg: 'LogIn'
+              })}
+              {Button({
+                cb: this.createAccount,
+                msg: "Create Account"
+              })}
+            </div>
           </div>
           <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
         </div>
