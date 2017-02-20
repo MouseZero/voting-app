@@ -1,24 +1,32 @@
 import React, { PropTypes, Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import Button from './Button';
 
 export default class PrintChart extends Component {
   constructor(props){
     super(props);
+    this.showPoll = this.showPoll.bind(this);
+    this.addAnswer = this.addAnswer.bind(this);
+  }
+
+  showPoll(){
+    browserHistory.push('poll/' + this.props.pollId);
+  }
+
+  addAnswer(){
+    browserHistory.push('add/answer/' + this.props.pollId);
   }
 
   render(){
     const { pollId, title, desc, delete: del } = this.props;
     return (
       <div>
-        <Link to={"poll/" + pollId}>Show</Link>
-        &nbsp;&nbsp;&nbsp;
-        <Link to={'add/answer/' + pollId}>Add Another Answer</Link>
-        <br />
-        Title: {title}
+        <h2>{title}</h2>
         <br />
         Desc: {desc}
         <br />
+        <Button cb={this.showPoll} msg="Show Poll"/>
+        <Button cb={this.addAnswer} msg="Add Answer"/>
         <Button cb={del(pollId)} msg="Delete"/>
         <hr />
       </div>
