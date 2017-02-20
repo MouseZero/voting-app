@@ -16,5 +16,5 @@ InputBox.propTypes = {
   key: PropTypes.number,
   msg: PropTypes.string,
   isPassword: PropTypes.string,
-  refa: PropTypes.function
+  reference: PropTypes.function,
 };

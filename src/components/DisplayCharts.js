@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import isEmpty from 'lodash.isempty';
 import MyPoll from './MyPoll';
 import { Link } from 'react-router';
@@ -33,3 +33,6 @@ export default function DisplayCharts({charts}){
     );
   }
 }
+DisplayCharts.propTypes = {
+  charts: PropTypes.array
+};

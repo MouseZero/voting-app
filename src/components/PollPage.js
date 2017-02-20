@@ -23,12 +23,12 @@ class PollPage extends Component {
     if (isEmpty(chart)){
       return (
         <div />
-      )
+      );
     } else {
       return(
         <div>
           <h1>{chart.title}</h1>
-          <div className='description'>{chart.description}</div>
+          <div className="description">{chart.description}</div>
           <VoteButtons
             data={Object.keys(chart.data)}
             chartId={chart.id}

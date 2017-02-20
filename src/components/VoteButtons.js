@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { vote } from '../helpers/backendInterface';
 import { browserHistory } from 'react-router';
 import Button from './Button';
@@ -27,5 +27,8 @@ function VoteButtons(props){
     </div>
   );
 }
+VoteButtons.propTypes = {
+  data: PropTypes.array
+};
 
 export default VoteButtons;
