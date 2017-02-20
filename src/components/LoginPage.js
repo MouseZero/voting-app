@@ -31,12 +31,44 @@ class LoginPage extends React.Component{
     return (
       <div>
         <h1>Login</h1>
-        User: <input type="text" ref={node => this.nameInput = node}/>
+        <div class="form-group row">
+          <label
+            for="name-input-field"
+            className="col-2 col-form-label">
+            User
+          </label>
+          <div className="col-10">
+            <input
+              className="form-control theme-form"
+              id="name-input-field"
+              type="text" ref={node => this.nameInput = node}
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label
+            for="password-input-field"
+            className="col-2 col-form-label">
+            Password
+          </label>
+          <div className="col-10">
+            <input
+              type="password"
+              className="form-control theme-form"
+              id="password-input-field"
+              ref={node => this.passwordInput = node}/>
+          </div>
+        </div>
         <br />
-        Password: <input type="password" ref={node => this.passwordInput = node}/>
-        <br />
-        <button onClick={this.login} >LogIn</button>
-        <button onClick={this.createAccount}>Create Account</button>
+        <button className="btn btn-primary btn-theme" onClick={this.login} >
+          LogIn
+        </button>
+        <button
+          className="btn btn-primary btn-theme"
+          onClick={this.createAccount}>
+          Create Account
+        </button>
       </div>
     );
   }

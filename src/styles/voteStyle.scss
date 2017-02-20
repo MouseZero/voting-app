@@ -20,6 +20,34 @@ $red-light: #cb7366;
   text-align: center;
 }
 
+/* ---- Buttons ---- */
+.btn-theme {
+  background-color: $red-light;
+  color: $red-dark;
+  border-color: $red-dark;
+  margin-right: 1vw;
+}
+.btn-theme:hover,
+.btn-theme:active,
+.btn-theme:visited,
+.btn-theme:focus {
+  /*TODO find a better way then using !important*/
+  background-color: $red-dark !important;
+  color: $red-light;
+  border-color: $red-light;
+  box-shadow: 0 4px 8px 0 rgba(203, 115, 102, 0.2), 0 6px 20px 0 rgba(203, 115, 102, 0.19);
+}
+
+/* --- Form --- */
+.theme-form:active,
+.theme-form:focus {
+  border-color: $red-dark;
+  box-shadow:
+    0 4px 8px 0 rgba(203, 115, 102, 0.2),
+    0 6px 20px 0 rgba(203, 115, 102, 0.19);
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
 /* ---- All Pages ---- */
 
 body{
