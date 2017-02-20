@@ -46,11 +46,12 @@ class createPollsPage extends React.Component{
   pointInputs(numberOf, points){
     const displayPoints = new Array(numberOf);
     for (let i=0; i<numberOf; i++){
-      displayPoints[i] = InputBox({
-        ref: node => points[i] = node,
-        msg: 'Point',
-        key: i
-      });
+      displayPoints[i] = (
+        <InputBox
+          reference={node => points[i] = node}
+          msg={"Answer "+(i+1)}
+          key={i}/>
+      )
     }
     return displayPoints;
   }
@@ -63,14 +64,12 @@ class createPollsPage extends React.Component{
           <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
           <div className="col-lg-4 col-md-6 col-sm-8 col-xs-12">
             <h1>Create A Poll</h1>
-            {InputBox({
-              ref: node => this.title = node,
-              msg: 'Title'
-            })}
-            {InputBox({
-              ref: node => this.desc = node,
-              msg: 'Description'
-            })}
+            <InputBox
+              reference={node => this.title = node}
+              msg="Title"/>
+            <InputBox
+              reference={node => this.desc = node}
+              msg="Description"/>
             {Button({
               cb: this.incrementPoints,
               msg: "+"
