@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { getNewToken } from '../helpers/backendInterface';
 import { log, LOW } from '../helpers/log';
 import InputBox from './InputBox';
+import Button from './Button';
 
 class LoginPage extends React.Component{
   constructor(props){
@@ -49,14 +50,14 @@ class LoginPage extends React.Component{
               })}
             </div>
             <br />
-            <button className="btn btn-primary btn-theme" onClick={this.login} >
-              LogIn
-            </button>
-            <button
-              className="btn btn-primary btn-theme"
-              onClick={this.createAccount}>
-              Create Account
-            </button>
+            {Button({
+              cb: this.login,
+              msg: 'LogIn'
+            })}
+            {Button({
+              cb: this.createAccount,
+              msg: "Create Account"
+            })}
           </div>
           <div className="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
         </div>
