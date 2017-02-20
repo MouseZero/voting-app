@@ -1,6 +1,7 @@
 import React from 'react';
 import { vote } from '../helpers/backendInterface';
 import { browserHistory } from 'react-router';
+import Button from './Button';
 
 function VoteButtons(props){
   function voteFor(voteFor){
@@ -18,10 +19,10 @@ function VoteButtons(props){
   return (
     <div className="voteButtons">
       <h2>Vote</h2>
-      {props.data.map(x => {
+      {props.data.map(( x, i ) => {
         return (
-          <button onClick={()=>voteFor(x)}>{x}</button>
-        )
+          <Button key={i} cb={()=>voteFor(x)} msg={x}/>
+        );
       })}
     </div>
   );
