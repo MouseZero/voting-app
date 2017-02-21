@@ -11,8 +11,8 @@ function VoteButtons(props){
     .then(() => {
       browserHist.push('/thanks/' + chartId);
     })
-    .catch(() => {
-      //TODO error message if something goes wrong
+    .catch((err) => {
+      toastr.warning(err);
     });
   }
 
