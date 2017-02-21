@@ -99,9 +99,8 @@ module.exports = {
 
   vote: (chartid, votefor) => {
     //need to move vote limits on the server side this is easy to cheat with
-    const { getItem, setItem } = window.localStorage;
-    if(getItem("voted"+chartid) != "voted"){
-      setItem("voted"+chartid, "voted");
+    if(window.localStorage.getItem("voted"+chartid) != "voted"){
+      window.localStorage.setItem("voted"+chartid, "voted");
       return new Promise((resolve, reject) => {
         $.ajax((baseUrl + 'vote'), {
           type: 'GET',
@@ -122,7 +121,7 @@ module.exports = {
     }
     return new Promise((resolve, reject) => {
       reject("You have already voted on this poll");
-    });
+    })
   },
 
   addAnswer: (token, chartid, newanswer) => {
@@ -215,8 +214,8 @@ module.exports = {
         error: () => {
           reject(
             'Error trying to create the user from the RESTful serivce ' +
-            '(is the server up?)'
-          );
+          '(is the server up?)'
+        );
         }
       });
     });
