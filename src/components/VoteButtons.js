@@ -9,6 +9,7 @@ function VoteButtons(props){
     const chartId = props.chartId;
     vote(chartId, voteFor)
     .then(() => {
+      toastr.success('Your vote was counted')
       browserHist.push('/thanks/' + chartId);
     })
     .catch((err) => {
