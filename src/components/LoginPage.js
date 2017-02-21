@@ -19,10 +19,11 @@ class LoginPage extends React.Component{
     getNewToken(this.nameInput.value, this.passwordInput.value)
     .then(function(data){
       setToken(data.token);
+      toastr.success('You are Logged In!');
       history.push('/');
     })
     .catch(function(err){
-      log(err.message, LOW);
+      toastr.warning(err.message);
     });
   }
 
