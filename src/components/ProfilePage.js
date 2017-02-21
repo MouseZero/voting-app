@@ -10,7 +10,8 @@ class ProfilePage extends React.Component {
   }
 
   logoff(){
-    localStorage.setItem('token', '');
+    localStorage.token = '';
+    toastr.success('You are now logged off');
     this.props.logout();
     this.props.history.push('/login');
   }
@@ -35,7 +36,9 @@ const mapStateToProps = () => {
 };
 const mapDispatchToProps = dispatch => {
 return {
-    logout: () => dispatch(setChartAction([]))
+    logout: () => {
+      return dispatch(setChartAction([]));
+    }
   };
 };
 
