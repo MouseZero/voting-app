@@ -5,6 +5,7 @@ import { deleteChart } from '../helpers/backendInterface';
 import PrintChart from './PrintChart';
 import { log, LOW } from '../helpers/log';
 import SmallerContainer from './SmallerContainer';
+import LoginPlease from './LoginPlease';
 
 const deletePoll = (token, updateCharts) => id => () => {
   deleteChart(token, id)
@@ -18,6 +19,7 @@ const deletePoll = (token, updateCharts) => id => () => {
 };
 
 function ViewPollsPage({ charts, token, updateAllCharts }) {
+  if(!localStorage.token) return (<LoginPlease/>);
   charts.length || updateAllCharts(token);
   return (
     <SmallerContainer>

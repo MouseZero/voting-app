@@ -6,6 +6,7 @@ import { log, LOW } from '../helpers/log';
 import InputBox from './InputBox';
 import Button from './Button';
 import SmallerContainer from './SmallerContainer';
+import LoginPlease from './LoginPlease';
 
 class createPollsPage extends React.Component{
   constructor(props){
@@ -58,6 +59,7 @@ class createPollsPage extends React.Component{
   }
 
   render() {
+    if(!localStorage.token) return (<LoginPlease/>);
     this.point = [];
     return (
       <SmallerContainer>
