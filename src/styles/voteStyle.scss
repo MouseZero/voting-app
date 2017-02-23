@@ -51,9 +51,6 @@ $red-very-dark: #4a556d;
   background-color: $red-very-dark !important;
   color: $red-light;
   border-color: $red-light;
-  box-shadow:
-    0 4px 8px 0 rgba(203, 115, 102, 0.2),
-    0 6px 20px 0 rgba(203, 115, 102, 0.19);
 }
 
 /* --- Form --- */
@@ -63,9 +60,6 @@ $red-very-dark: #4a556d;
 .theme-form:active,
 .theme-form:focus {
   border-color: $red-dark;
-  box-shadow:
-    0 4px 8px 0 rgba(203, 115, 102, 0.2),
-    0 6px 20px 0 rgba(203, 115, 102, 0.19);
 }
 
 /* ---- All Pages ---- */
