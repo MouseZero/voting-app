@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 class MyPoll extends Component {
   constructor(props){
     super(props);
-    this.min = props.min;
     this.drawChart = this.drawChart.bind(this);
     this.refreshOnWindowSizeChange = this.refreshOnWindowSizeChange.bind(this);
     this.convertDataObjectToArray = this.convertDataObjectToArray.bind(this);
@@ -117,7 +116,6 @@ class MyPoll extends Component {
 }
 MyPoll.propTypes = {
   data: PropTypes.object,
-  min: PropTypes.number,
   chartId: PropTypes.number
 };
 

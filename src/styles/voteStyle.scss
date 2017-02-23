@@ -1,7 +1,13 @@
 $dark: #666;
+/*
 $red-dark: #5f312f;
 $red-very-dark: #5f0806;
 $red-light: #cb7366;
+*/
+$red-light: #afc9ff;
+$red-dark: #677696;
+$red-very-dark: #4a556d;
+
 /* --- General --- */
 .center{
   text-align: center;
@@ -33,8 +39,8 @@ $red-light: #cb7366;
 .btn-theme,
 .btn-theme:focus {
   background-color: $red-light;
-  color: $red-dark;
-  border-color: $red-dark;
+  color: $red-very-dark;
+  border-color: $red-very-dark;
   margin: 5px 5px 5px 0px;
 }
 .btn-theme:hover,
@@ -42,7 +48,7 @@ $red-light: #cb7366;
 .btn-theme:visited,
  {
   /*TODO find a better way then using !important*/
-  background-color: $red-dark !important;
+  background-color: $red-very-dark !important;
   color: $red-light;
   border-color: $red-light;
   box-shadow:
@@ -84,7 +90,7 @@ body{
 }
 
 a, a:visited, a:active, a:focus{
-  color: $red-dark;
+  color: $red-very-dark;
   text-decoration: none;
 }
 
@@ -104,7 +110,7 @@ a:hover {
 }
 
 .nav-button:hover {
-  background-color: $red-dark;
+  background-color: $red-very-dark;
   a, a:visited, a:active, a:focus, a:hover{
     color: $red-light
   }

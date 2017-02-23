@@ -34,7 +34,7 @@ class PollPage extends Component {
             chartId={chart.id}
           />
           <br />
-          <MyPoll data={chart.data} min="0"/>
+          <MyPoll data={chart.data}/>
         </div>
       );
     }
