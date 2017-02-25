@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import * as d3 from "d3";
 
 class MyPoll extends Component {
   constructor(props){
