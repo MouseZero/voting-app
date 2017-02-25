@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getNewToken } from '../helpers/backendInterface';
-import { log, LOW } from '../helpers/log';
 import InputBox from './InputBox';
 import Button from './Button';
 import SmallerContainer from './SmallerContainer';
+import * as toastr from 'toastr';
 
 class LoginPage extends React.Component{
   constructor(props){

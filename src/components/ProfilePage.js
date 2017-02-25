@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { setChartAction } from '../actions/chartActions';
 import Button from './Button';
+import * as toastr from 'toastr';
 
 class ProfilePage extends React.Component {
   constructor(props){

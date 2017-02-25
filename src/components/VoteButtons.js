@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { vote } from '../helpers/backendInterface';
 import { browserHistory } from 'react-router';
 import Button from './Button';
+import * as toastr from 'toastr';
 
 function VoteButtons(props){
   function voteFor(voteFor){
@@ -9,7 +10,7 @@ function VoteButtons(props){
     const chartId = props.chartId;
     vote(chartId, voteFor)
     .then(() => {
-      toastr.success('Your vote was counted')
+      toastr.success('Your vote was counted');
       browserHist.push('/thanks/' + chartId);
     })
     .catch((err) => {
