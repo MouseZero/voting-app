@@ -40,7 +40,8 @@ class LoginPage extends React.Component{
           msg="User"/>
         <InputBox
           reference={node => this.passwordInput = node}
-          msg="Password"/>
+          msg="Password"
+          isPassword="1"/>
         <Button cb={this.login} msg="LogIn"/>
         <Button cb={this.createAccount} msg="Create Account"/>
       </SmallerContainer>
