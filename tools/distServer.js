@@ -7,11 +7,13 @@ import {chalkProcessing} from './chalkConfig';
 
 /* eslint-disable no-console */
 
+const PORT = process.argv[2] || 3000
+
 console.log(chalkProcessing('Opening production build...'));
 
 // Run Browsersync
 browserSync({
-  port: 3000,
+  port: PORT,
   ui: {
     port: 3001
   },

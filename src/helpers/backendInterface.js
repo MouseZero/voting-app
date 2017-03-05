@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3333/api/';
+const baseUrl = 'http://z3r0.info:41000/api/';
 
 module.exports = {
 
